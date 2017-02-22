@@ -10,6 +10,7 @@ public class JarFile {
 		InputStream is = classloader.getResourceAsStream("com/xxx/xxxx/yourfile.xml");
 	 */
 	
+	
 	static {
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 		InputStream is = classloader.getResourceAsStream("com/xxx/xxxx/yourfile.xml");

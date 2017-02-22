@@ -13,6 +13,32 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+
+/**
+ * 通过调用Class类的getResourceAsStream方法来加载资源文件：
+ * public InputStream getResourceAsStream(String pathToConfigFile)；
+该方法接收一个String类型的参数（pathToConfigFile）来表示资源文件的地址，
+如果加载成功，则返回该资源文件的输入流(InputStream)，
+如果失败，则返回null。
+重要的是，在传入pathToConfigFile参数时，有两种方式，
+第一种方式为绝对定位方式，即pathToConfigFile以"/"开头，此时Java以classpath为根目录，直接加上pathToConfigFile来搜索资源文件。
+第二种方式为相对定位方式，即pathToConfigFile不以"/"开头，此时默认是从此类所在的包下取资源,资源文件的全路径应该为：调用getResourceAsStream方法的类的package路径加上pathToConfigFile。（在将package转为目录时将"."变成"/"） 
+
+ * 
+ * 
+ * @author Administrator
+ *
+ */
+
+/**
+ * ClassLoader类也提供和Class类相同的加载方法：
+public InputStream getResourceAsStream(String pathToConfigFile)；
+ 
+用ClassLoader加载配置文件时，pathToConfigFile均不能以"/"开头，在查找时直接在classpath下进行查找。
+
+ * @author Administrator
+ *
+ */
 public class TestMain {
 
 	public static void print(InputStream i){

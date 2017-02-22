@@ -34,6 +34,8 @@ public class DDD {
 	
 	public static void main(String[] args) {
 		InputStream ll = DDD.class.getResourceAsStream("a.txt");
+		if(ll==null)
+			System.out.println("文件为空");
 		String st = print(ll);
 		Map<String, Object> map = JSON.parseObject(st, Map.class);
 		System.out.println(map);
