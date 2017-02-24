@@ -1,0 +1,20 @@
+{
+    "code": 0,
+    "msg": "success",
+    "type": "ctg",
+    "timestamp": 1487648307835,
+    "data": [
+        {
+            "id": "2",
+            " nm_itn": " 水果/hd-fruit",
+            " ctg_typ": "全国频道",
+            " grp_pch": 1
+        },
+        {
+            "id": "4",
+            " nm_itn": " 水果/hd-fruit",
+            " ctg_typ": "全国频道",
+            " grp_pch": 1
+        }
+    ]
+}
