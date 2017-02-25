@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
-import com.jimmie.test.fastjson.ReturnItemInfo;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Lists;
 
 public class TagTest2 {
 
@@ -33,36 +35,39 @@ public class TagTest2 {
 		
 	}
 	
+	public static <T> List<T> jsonTranceTo(String data,Class<T> clazz){
+		
+		return JSONArray.parseArray(data, clazz);
+		
+	}
+	
 	public static void main(String[] args) {
 		InputStream ll = TagTest2.class.getResourceAsStream("b.txt");
 		if(ll==null)
 			System.out.println("文件为空");
 		String st = print(ll);
 		System.out.println(st);
-		Map<String, Object> map = JSON.parseObject(st, Map.class);
-		System.out.println(map);
-		System.out.println(map.get("code"));
+		
+		
+		Map<String, Object> map = JSONObject.parseObject(st, Map.class);
 		String data = map.get("data").toString();
 		System.out.println("data:"+data);
-		List<ChannelAsDto> list2 = JSON.parseArray(data, ChannelAsDto.class);
-//		System.out.println(list2);
-		System.out.println(list2.get(0).getNm_itn());
+		List<ChannelAsDto2> list2 = JSONObject.parseArray(data, ChannelAsDto2.class);
+		System.out.println(list2.get(0).getName());
 		
-		List<ChannelAsDto> list4 = JSON.parseObject(data, List.class);
-//		System.out.println(list4);
-		System.out.println(list4.get(1).getNm_itn());
+		List<ChannelAsDto2> list4 = JSONArray.parseArray(data, ChannelAsDto2.class);
+		System.out.println(list4.get(1).getChannaelType());
 		
-		String k = JSON.toJSONString("[{unit=个, manufacturing_date=null, quantity=119, material_id=1000002, rkdh=RK-20161115-SH-1127}, "
-				+ "{unit=个, manufacturing_date=null, quantity=42, material_id=1000002, rkdh=RK-20161115-SH-1127}, "
-				+ "{unit=个, manufacturing_date=null, quantity=5, material_id=1000001, rkdh=RK-20161115-SH-1127}, "
-				+ "{unit=个, manufacturing_date=null, quantity=68, material_id=1000001, rkdh=RK-20161115-SH-1127}, "
-				+ "{unit=个, manufacturing_date=null, quantity=611, material_id=1000001, rkdh=RK-20161115-SH-1127}]");
-		
-		List<ReturnItemInfo> list3 = JSON.parseArray(k, ReturnItemInfo.class);
-		
-		System.out.println(k);
-		System.out.println(list3);
-
+		List<ChannelAsDto2> jsonTranceTo = jsonTranceTo(data, ChannelAsDto2.class);
+		System.out.println(jsonTranceTo.get(0).getName());
+		List<String> nn = Lists.newArrayList();
+		nn.add("asas");
+		nn.add("hhj");
+		nn.add("iiuu");
+		String jsonss = JSON.toJSONString(nn);
+		System.out.println(nn);
+		List<JSONObject> list5 = JSONObject.parseObject(data,List.class);
+		System.out.println(list5.get(0));
 	}
 
 }

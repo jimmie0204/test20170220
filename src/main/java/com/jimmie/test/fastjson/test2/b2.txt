@@ -1,0 +1,6 @@
+{
+    "nm_itn": "水果/hd-fruit",
+    "id": "2",
+    "ctg_typ": "全国频道",
+    "grp_pch": 1
+}

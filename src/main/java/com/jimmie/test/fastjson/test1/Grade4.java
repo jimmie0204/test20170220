@@ -6,17 +6,17 @@ import java.util.List;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 
-public class Grade3 implements Serializable{
+public class Grade4 implements Serializable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4984124242998617352L;
 
-	@JSONField(name="name_grade")
+	@JSONField(name="name_grade",serialzeFeatures=SerializerFeature.WriteMapNullValue)
 	private String name;
 	
-	@JSONField
+	@JSONField(name="st_count",serialzeFeatures={SerializerFeature.WriteMapNullValue,SerializerFeature.WriteNullNumberAsZero})
 	private Integer count;
 
 	@JSONField

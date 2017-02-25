@@ -67,7 +67,7 @@ public class TestMain {
 	public void test4(){//加上WriteMapNullValue，null字段也序列化，为null
 		Grade3 grade = new Grade3();
 		grade.setName(null);
-		grade.setCount(0);
+//		grade.setCount(0);
 		
 		Student s1 = new Student(1,"a");
 		Student s2 = new Student(1,"b");
@@ -79,5 +79,23 @@ public class TestMain {
 		grade.setSlist(list);
 
 		System.out.println(JSONObject.toJSONString(grade,SerializerFeature.WriteMapNullValue));
+	}
+	
+	@Test
+	public void test5(){//默认null字段不序列化,现在加了注解，可以输出null了
+		Grade4 grade = new Grade4();
+		grade.setName(null);
+//		grade.setCount(null);
+		
+		Student s1 = new Student(1,"a");
+		Student s2 = new Student(1,"b");
+		
+		List<Student> list = new ArrayList<Student>();
+		list.add(s1);
+		list.add(s2);
+		
+		grade.setSlist(list);
+
+		System.out.println(JSONObject.toJSONString(grade));
 	}
 }
