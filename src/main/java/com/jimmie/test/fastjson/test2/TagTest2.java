@@ -41,6 +41,13 @@ public class TagTest2 {
 		
 	}
 	
+	public static <T> T  jsonTranceTo(String data,T arg){
+		
+		arg = (T) JSON.parseObject(data, arg.getClass());
+		return 	arg;
+		
+	}
+	
 	public static void main(String[] args) {
 		InputStream ll = TagTest2.class.getResourceAsStream("b.txt");
 		if(ll==null)

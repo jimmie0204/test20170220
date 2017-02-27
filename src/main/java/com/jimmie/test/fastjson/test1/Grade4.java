@@ -19,8 +19,11 @@ public class Grade4 implements Serializable{
 	@JSONField(name="st_count",serialzeFeatures={SerializerFeature.WriteMapNullValue,SerializerFeature.WriteNullNumberAsZero})
 	private Integer count;
 
-	@JSONField
-	private List<Student> slist;
+	@JSONField(name="student_list")
+	private List<Student2> slist;
+	
+	@JSONField(serialize=false)
+	private Student student;
 
 	public String getName() {
 		return name;
@@ -38,11 +41,19 @@ public class Grade4 implements Serializable{
 		this.count = count;
 	}
 
-	public List<Student> getSlist() {
+	public List<Student2> getSlist() {
 		return slist;
 	}
 
-	public void setSlist(List<Student> slist) {
+	public void setSlist(List<Student2> slist) {
 		this.slist = slist;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 }

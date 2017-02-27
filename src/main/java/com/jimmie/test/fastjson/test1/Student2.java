@@ -2,6 +2,8 @@ package com.jimmie.test.fastjson.test1;
 
 import java.io.Serializable;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class Student2 implements Serializable{
 
 	/**
@@ -9,8 +11,10 @@ public class Student2 implements Serializable{
 	 */
 	private static final long serialVersionUID = 4152167547705485481L;
 
+	@JSONField(name="s_age")
 	public int age;
 	
+	@JSONField(name="s_name")
 	public String name;
 	
 	public int getAge() {

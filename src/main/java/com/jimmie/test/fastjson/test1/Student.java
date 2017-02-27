@@ -2,6 +2,8 @@ package com.jimmie.test.fastjson.test1;
 
 import java.io.Serializable;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class Student implements Serializable{
 
 	/**

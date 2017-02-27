@@ -87,15 +87,17 @@ public class TestMain {
 		grade.setName(null);
 //		grade.setCount(null);
 		
-		Student s1 = new Student(1,"a");
-		Student s2 = new Student(1,"b");
+		Student2 s1 = new Student2(1,"a");
+		Student2 s2 = new Student2(1,"b");
 		
-		List<Student> list = new ArrayList<Student>();
+		List<Student2> list = new ArrayList<Student2>();
 		list.add(s1);
 		list.add(s2);
-		
 		grade.setSlist(list);
 
+		Student s = new Student(100,"student");
+		grade.setStudent(s);
+		
 		System.out.println(JSONObject.toJSONString(grade));
 	}
 }
