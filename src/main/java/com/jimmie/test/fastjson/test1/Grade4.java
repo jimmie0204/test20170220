@@ -1,6 +1,7 @@
 package com.jimmie.test.fastjson.test1;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import com.alibaba.fastjson.annotation.JSONField;
@@ -24,6 +25,17 @@ public class Grade4 implements Serializable{
 	
 	@JSONField(serialize=false)
 	private Student student;
+	
+	@JSONField(name="grade_time",format="yyyy-MM-dd HH:mm:ss")
+	private Date gradeTime;
+
+	public Date getGradeTime() {
+		return gradeTime;
+	}
+
+	public void setGradeTime(Date gradeTime) {
+		this.gradeTime = gradeTime;
+	}
 
 	public String getName() {
 		return name;

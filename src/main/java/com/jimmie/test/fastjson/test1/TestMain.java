@@ -1,6 +1,7 @@
 package com.jimmie.test.fastjson.test1;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -86,7 +87,7 @@ public class TestMain {
 		Grade4 grade = new Grade4();
 		grade.setName(null);
 //		grade.setCount(null);
-		
+		grade.setGradeTime(new Date());
 		Student2 s1 = new Student2(1,"a");
 		Student2 s2 = new Student2(1,"b");
 		
