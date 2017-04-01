@@ -19,4 +19,9 @@ public class WeiTest {
 		}
 	}
 	
+	@Test
+	public void test3(){
+		System.out.println(1<<29);
+	}
+	
 }

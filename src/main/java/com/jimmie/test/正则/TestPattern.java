@@ -3,6 +3,7 @@ package com.jimmie.test.正则;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.oro.text.regex.MalformedPatternException;
@@ -68,7 +69,7 @@ public class TestPattern {
 	     */
 	    public static void parseMode(String value) {
 	        PatternMatcher matcher = new Perl5Matcher();
-	        if (matcher.matches(value, patterns.get(MODE_PATTERN))) {
+	        /*if (matcher.matches(value, patterns.get(MODE_PATTERN))) {
 	            MatchResult matchResult = matcher.getMatch();
 	            String prefix = matchResult.group(1);
 	            String startStr = matchResult.group(3);
@@ -89,9 +90,10 @@ public class TestPattern {
 	                builder.append(prefix).append(str).append(postfix);
 	                values.add(builder.toString());
 	            }
-	        } else if (isWildCard(value)) {// 通配符支持
+	        } else */if (isWildCard(value)) {// 通配符支持
 	        	System.out.println("通配符匹配");
 	        } else {
+	        	System.out.println("single 匹配");
 	        }
 	    }
 	    
@@ -114,6 +116,21 @@ public class TestPattern {
         }
 	    
 	    
+	    
+		public static boolean match(String str,String regEx){
+			regEx = MODE_PATTERN;
+		    // 编译正则表达式
+			java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regEx);
+		    // 忽略大小写的写法
+		    // Pattern pat = Pattern.compile(regEx, Pattern.CASE_INSENSITIVE);
+		    Matcher matcher = pattern.matcher(str);
+		    // 字符串是否与正则表达式相匹配
+		    boolean rs = matcher.matches();
+		    System.out.println(rs);
+			return rs;
+		}
+		
+		
 	@Test
 	public void test1(){
 		
@@ -129,5 +146,16 @@ public class TestPattern {
 		parseMode("accoun%");
 		String ll = makeSQLPattern2("tes[t");
 		isWildCardMatch("tes[t","test");
+	}
+	
+	@Test
+	public void test3(){
+		String str = "accoun%";
+		match(str, null);
+	}
+	
+	@Test
+	public void test4(){
+		parseMode("*");
 	}
 }

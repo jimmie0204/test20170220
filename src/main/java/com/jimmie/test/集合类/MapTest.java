@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import com.google.common.collect.Maps;
 import com.jimmie.test.bean操作.Student;
 
 public class MapTest {
@@ -100,6 +101,16 @@ public class MapTest {
 		map.putAll(map2);
 		System.out.println(map);
 		
+	}
+	
+	@Test
+	public void test3(){
+		Map<Integer,String> supplierMap = Maps.newHashMap();
+		String tt = "1";
+		supplierMap.put(1, "a");
+		supplierMap.put(2, "a");
+		System.out.println(supplierMap);
+		System.out.println(supplierMap.get(tt));
 	}
 	
 }
