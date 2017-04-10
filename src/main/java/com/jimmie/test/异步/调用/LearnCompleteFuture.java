@@ -15,10 +15,10 @@ public class LearnCompleteFuture {
     private static Random random = new Random();  
   
     public static void main(String[] args) throws InterruptedException, ExecutionException {  
-        useFuture();  
-          
-        TimeUnit.SECONDS.sleep(10);  
-        System.out.println();  
+//        useFuture();  
+//          
+//        TimeUnit.SECONDS.sleep(10);  
+//        System.out.println();  
           
         useCompletableFuture();  
     }  
