@@ -70,6 +70,7 @@ public enum TreeBAK {
 			childrenTreeNode = nodeMap.get(nodeId);
 		} catch (Exception e) {
 			readlock.unlock();
+			return null;
 		}
 
 		System.out.println(Thread.currentThread().getName()
