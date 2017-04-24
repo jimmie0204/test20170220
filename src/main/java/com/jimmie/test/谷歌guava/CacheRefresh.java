@@ -24,7 +24,7 @@ import com.google.common.util.concurrent.ListenableFutureTask;
 * @author lenovo 
 * 
 */  
-public class Refresh  
+public class CacheRefresh  
 {  
 
   static int ixs = 0;  
@@ -34,7 +34,7 @@ public class Refresh
   {  
 
       LoadingCache<String, String> graphs = CacheBuilder.newBuilder()  
-              .maximumSize(1000).refreshAfterWrite(1, TimeUnit.MICROSECONDS)  
+              .maximumSize(1000).refreshAfterWrite(1, TimeUnit.SECONDS)  
               .build(new CacheLoader<String, String>()  
               {  
                   @Override  
