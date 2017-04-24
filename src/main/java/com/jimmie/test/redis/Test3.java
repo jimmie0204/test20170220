@@ -13,7 +13,7 @@ public class Test3 {
 
 	@Before
 	public void connect(){
-		JedisPool ll = new JedisPool("172.16.3.254");
+		JedisPool ll = new JedisPool("172.16.3.254",6378);
 		jedis = ll.getResource();
 	}
 	
