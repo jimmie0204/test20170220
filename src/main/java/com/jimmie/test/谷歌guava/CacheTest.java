@@ -92,47 +92,50 @@ public class CacheTest {
 	 * 过时测试，同步移除监听器测试
 	 * @throws ExecutionException
 	 * @throws InterruptedException
+	 * @throws IOException 
 	 */
 	@Test
-	public void test4() throws ExecutionException, InterruptedException {
-		LoadingCache<String, String> cache = CacheBuilder.newBuilder().expireAfterWrite(5, TimeUnit.SECONDS)
-				/*.removalListener(new RemovalListener<String, String>() {
+	public void test4() throws ExecutionException, InterruptedException, IOException {
+		LoadingCache<String, String> cache = CacheBuilder.newBuilder().expireAfterWrite(2, TimeUnit.SECONDS)
+				.removalListener(new RemovalListener<String, String>() {
 
 					@Override
 					public void onRemoval(RemovalNotification<String, String> notification) {
 						System.out.println(notification.getKey()+"==="+notification.getValue()+"已被移除，因为"+notification.getCause());
 						
 					}
-				})*/
+				})
 				.build(new CacheLoader<String, String>() {
 
 					@Override
 					public String load(String key) throws Exception {
-						// TODO Auto-generated method stub
+						System.out.println("load====="+key);
 						return "hello " + key + ";";
 					}
 
 				});
 		
 
-		cache.put("jimmie", "sdsdsd");
+//		cache.put("jimmie", "sdsdsd");
 
 		System.out.println(cache.get("jimmie"));
 
-		Thread.sleep(6000);
+		Thread.sleep(2000);
 		System.out.println(cache.get("jimmie"));
-		System.out.println(cache.apply("mryx"));
-		System.out.println(cache.get("mryx"));
+//		Thread.sleep(3000);
+		System.out.println(cache.get("jimmie"));
+		System.in.read();
 	}
 	
 	/**
 	 * 过时测试，异步移除监听器测试
 	 * @throws ExecutionException
 	 * @throws InterruptedException
+	 * @throws IOException 
 	 */
 	@Test
-	public void test5() throws ExecutionException, InterruptedException {
-		LoadingCache<String, String> cache = CacheBuilder.newBuilder().expireAfterWrite(5, TimeUnit.SECONDS)
+	public void test5() throws ExecutionException, InterruptedException, IOException {
+		LoadingCache<String, String> cache = CacheBuilder.newBuilder().expireAfterAccess(2, TimeUnit.SECONDS)
 				.removalListener(	RemovalListeners.asynchronous(new RemovalListener<String, String>() {
 
 					@Override
@@ -145,20 +148,22 @@ public class CacheTest {
 
 					@Override
 					public String load(String key) throws Exception {
-						// TODO Auto-generated method stub
+						System.out.println("load====="+key);
+//						TimeUnit.SECONDS.sleep(5);
 						return "hello " + key + ";";
 					}
 
 				});
 		
 
-		cache.put("jimmie", "sdsdsd");
+		System.out.println(cache.get("jimmie"));
+		System.out.println(cache.get("jimmie"));
 
+		Thread.sleep(2000);
 		System.out.println(cache.get("jimmie"));
-		Thread.sleep(6000);
+		Thread.sleep(3000);
 		System.out.println(cache.get("jimmie"));
-		System.out.println(cache.apply("mryx"));
-		System.out.println(cache.get("mryx"));
+		System.in.read();
 
 	}
 	

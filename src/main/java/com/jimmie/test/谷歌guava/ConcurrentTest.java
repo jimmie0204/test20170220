@@ -70,7 +70,9 @@ public class ConcurrentTest {
             public void run() {  
                  try{  
                       barrier.await();  
-                     Thread. sleep((long)(Math.random()*4000));//每个client随机睡眠，为了充分测试refresh和load  
+                      long sleepTime = (long)(Math.random()*4000);
+                      System.out.println(Thread. currentThread().getName()+",sleep "+sleepTime+"秒===");
+                     Thread. sleep(sleepTime);//每个client随机睡眠，为了充分测试refresh和load  
                      System. out.println(Thread. currentThread().getName() + ",val:"+ cache .get("key"));  
                       latch.countDown();  
                 }catch(Exception e) {  
