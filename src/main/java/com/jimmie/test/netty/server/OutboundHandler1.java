@@ -13,7 +13,7 @@ public class OutboundHandler1 extends ChannelOutboundHandlerAdapter {
 	@Override
 	// 向client发送消息
 	public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-		logger.info("OutboundHandler1.write");
+		logger.info("OutboundHandler1.write==="+Thread.currentThread().getName());
 		System.out.println("接受的上一个handler的信息为："+msg);
 		String response = "I am ok!";
 		ByteBuf encoded = ctx.alloc().buffer(4 * response.length());

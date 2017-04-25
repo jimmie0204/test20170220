@@ -15,7 +15,7 @@ public class NettyServer{
 		
 		EventLoopGroup boss = new NioEventLoopGroup();
 		EventLoopGroup worker = new NioEventLoopGroup();
-		
+		EventLoopGroup myEx = new NioEventLoopGroup();
 		try {
 			
 			ServerBootstrap server = new  ServerBootstrap();
@@ -30,7 +30,7 @@ public class NettyServer{
 					ch.pipeline().addLast(new OutboundHandler2());
 					// 注册两个InboundHandler，执行顺序为注册顺序，所以应该是InboundHandler1 InboundHandler2
 					ch.pipeline().addLast(new InboundHandler1());
-					ch.pipeline().addLast(new InboundHandler2());
+					ch.pipeline().addLast(myEx,new InboundHandler2());
 //					ch.pipeline().addLast(new HelloServerHandler());
 					
 				}

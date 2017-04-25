@@ -18,13 +18,13 @@ public class OutboundHandler2 extends ChannelOutboundHandlerAdapter {
 	 */
 	@Override
 	public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-		logger.info("OutboundHandler2.write");
+		logger.info("OutboundHandler2.write==="+Thread.currentThread().getName());
 		System.out.println("接受的上一个handler的信息为："+msg);
-		String response = "我他妈先发一个I am ok!";
+		/*String response = "我他妈先发一个I am ok!";
 		ByteBuf encoded = ctx.alloc().buffer(4 * response.length());
 		encoded.writeBytes(response.getBytes());
 		ctx.writeAndFlush(encoded);//第一次往下传递
-		
+*/		
 	
 		/*TimeUnit.SECONDS.sleep(5);
 		
@@ -34,7 +34,6 @@ public class OutboundHandler2 extends ChannelOutboundHandlerAdapter {
 		ctx.writeAndFlush(otherMsg);*/
 		
 		// 执行下一个OutboundHandler
-		TimeUnit.SECONDS.sleep(5);
-		super.write(ctx, response, promise);//第二次往下传递
+		super.write(ctx, msg, promise);//第二次往下传递
 	}
 }

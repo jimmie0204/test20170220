@@ -11,7 +11,7 @@ public class InboundHandler1 extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-		logger.info("InboundHandler1.channelRead: ctx :" + ctx);
+		logger.info("InboundHandler1.channelRead: ctx :" + ctx+"==="+Thread.currentThread().getName());
 		System.out.println("接受的上一个handler的信息为："+msg);
 		// 通知执行下一个InboundHandler
 		ctx.fireChannelRead(msg);

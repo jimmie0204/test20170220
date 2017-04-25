@@ -25,7 +25,7 @@ public class HelloServerHandler extends ChannelInboundHandlerAdapter  {
 			// 在当前场景下，发送的数据必须转换成ByteBuf数组
 			ByteBuf encoded = ctx.alloc().buffer(4 * response.length());
 			encoded.writeBytes(response.getBytes());
-			ctx.write(encoded);
+			ctx.write(encoded);//往下传，不是最后一个handler
 			ctx.flush();
 
 	    }
