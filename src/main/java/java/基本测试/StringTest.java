@@ -1,4 +1,4 @@
-package java7.string;
+package java.基本测试;
 
 import org.junit.Test;
 
