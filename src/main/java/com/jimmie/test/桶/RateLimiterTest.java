@@ -61,4 +61,15 @@ public class RateLimiterTest {
 		    System.out.println(limiter.acquire());
 		}
 	}
+	
+	@Test
+	public void test3() throws InterruptedException{
+		RateLimiter limiter = RateLimiter.create(12);//每秒五个，最大容量五个
+		System.out.println(limiter.tryAcquire(10));
+		for(;;){
+			TimeUnit.MILLISECONDS.sleep(100);
+			System.out.println(limiter.tryAcquire());
+		}
+		
+	}
 }
