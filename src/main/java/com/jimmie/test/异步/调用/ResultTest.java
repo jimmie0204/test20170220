@@ -27,7 +27,8 @@ public class ResultTest {
 
 			@Override
 			public Integer apply(Throwable t) {
-				// TODO Auto-generated method stub
+				String msg = t.getMessage();
+				System.out.println("抛异常了："+msg);
 				return null;
 			}
 		});
@@ -51,8 +52,8 @@ public class ResultTest {
         CompletableFuture<Integer> future = CompletableFuture.supplyAsync(ResultTest::getMoreData);
         System.out.println("正在异步执行。。。"+future);
         CompletableFuture<Integer> f = future.whenComplete((v, e) -> {
-            System.out.println(v);
-            System.out.println(e);
+            System.out.println("result:"+v);
+            System.out.println("throwable:"+e);
         });
         System.out.println("2。。。"+f);
         System.out.println(f.get());

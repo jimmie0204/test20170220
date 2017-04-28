@@ -8,6 +8,7 @@ import org.junit.Test;
 import com.google.common.base.Charsets;
 import com.google.common.base.Joiner;
 import com.google.common.collect.HashMultiset;
+import com.google.common.collect.Lists;
 import com.google.common.primitives.Ints;
 
 public class StringTest {
@@ -15,6 +16,14 @@ public class StringTest {
 	@Test
 	public void test1(){
 		final String joiner  = Joiner.on("-").skipNulls().join(Arrays.asList("1",null,"a", 5, 7));
+		System.out.println(joiner);
+	}
+	
+	@Test
+	public void test1_1(){
+//		List<String> mnemonicCodes = Lists.newArrayList("sdsgf",null,"","kkkk","sdfisngin||SDFSDF");
+		List<String> mnemonicCodes = Lists.newArrayList("a","b","c");
+		final String joiner  = Joiner.on("|").skipNulls().join(mnemonicCodes);
 		System.out.println(joiner);
 	}
 	

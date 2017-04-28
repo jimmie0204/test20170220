@@ -15,12 +15,12 @@ public class LearnCompleteFuture {
     private static Random random = new Random();  
   
     public static void main(String[] args) throws InterruptedException, ExecutionException {  
-//        useFuture();  
-//          
-//        TimeUnit.SECONDS.sleep(10);  
-//        System.out.println();  
+        useFuture();  
           
-        useCompletableFuture();  
+        TimeUnit.SECONDS.sleep(5);  
+        System.out.println("==========================");  
+          
+//        useCompletableFuture();  
     }  
   
     private static void useFuture() throws InterruptedException, ExecutionException {  
@@ -30,11 +30,13 @@ public class LearnCompleteFuture {
         Future<Void> futureB = exector.submit(() -> work("B1"));  
         while (true) {  
             try {  
-                futureA.get(1, TimeUnit.SECONDS);  
+            	System.out.println("阻塞A1，等待结果");
+                futureA.get(1, TimeUnit.SECONDS);  //设置时间内获取不到结果会抛异常继续往下走
                 break;  
             } catch (TimeoutException e) {  
             }  
             try {  
+            	System.out.println("阻塞B1，等待结果");
                 futureB.get(1, TimeUnit.SECONDS);  
                 break;  
             } catch (TimeoutException e) {  
@@ -52,12 +54,15 @@ public class LearnCompleteFuture {
     }  
   
     public static Void work(String name) {  
+    	long begin = System.currentTimeMillis();
         System.out.println(name + " starts at " + LocalTime.now());  
+        System.out.println(name+"在in thread："+Thread.currentThread().getName());
         try {  
-            TimeUnit.SECONDS.sleep(random.nextInt(10));  
+            TimeUnit.SECONDS.sleep(random.nextInt(5));  
         } catch (InterruptedException e) {  
         }  
         System.out.println(name + " ends at " + LocalTime.now());  
+        System.out.println(name + " 用时： " + (System.currentTimeMillis()-begin));  
         return null;  
     }  
 }  

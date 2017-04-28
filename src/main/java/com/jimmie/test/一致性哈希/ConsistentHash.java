@@ -71,7 +71,7 @@ public class ConsistentHash<T> {
 		nodes.add("127.0.0.3");
 		ConsistentHash<String> consistentHash = new ConsistentHash<String>(160,
 				nodes);
-
+		System.out.println(consistentHash.getSize()); // 
 		consistentHash.add("127.0.0.4");
 		System.out.println(consistentHash.getSize()); // 640
 
