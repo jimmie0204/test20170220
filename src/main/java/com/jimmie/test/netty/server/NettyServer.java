@@ -31,7 +31,7 @@ public class NettyServer{
 					// 注册两个InboundHandler，执行顺序为注册顺序，所以应该是InboundHandler1 InboundHandler2
 					ch.pipeline().addLast(new InboundHandler1());
 					ch.pipeline().addLast(myEx,new InboundHandler2());
-//					ch.pipeline().addLast(new HelloServerHandler());
+					ch.pipeline().addLast(new HelloServerHandler());
 					
 				}
 			});

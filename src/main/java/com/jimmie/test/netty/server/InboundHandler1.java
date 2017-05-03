@@ -19,7 +19,7 @@ public class InboundHandler1 extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-		logger.info("InboundHandler1.channelReadComplete");
-		ctx.fireChannelReadComplete();
+//		logger.info("InboundHandler1.channelReadComplete");
+//		ctx.fireChannelReadComplete();
 	}
 }

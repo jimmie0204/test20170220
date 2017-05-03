@@ -4,10 +4,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelOutboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
 
+@Sharable
 public class OutboundHandler1 extends ChannelOutboundHandlerAdapter {
 	private static Log	logger	= LogFactory.getLog(OutboundHandler1.class);
 	@Override

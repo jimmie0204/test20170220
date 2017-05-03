@@ -23,13 +23,14 @@ public class InboundHandler2 extends ChannelInboundHandlerAdapter {
 		result.release();
 		
 		//最后一个inboundHandler处理业务之后，开始往客户端写数据
-		ctx.write(msg);
+//		ctx.write(msg);
+		ctx.fireChannelRead(resultStr);
 	}
 
 	@Override
 	public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-		logger.info("InboundHandler2.channelReadComplete");
-		ctx.fireChannelReadComplete();
+//		logger.info("InboundHandler2.channelReadComplete");
+//		ctx.fireChannelReadComplete();
 	}
 
 }
