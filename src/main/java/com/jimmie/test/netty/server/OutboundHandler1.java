@@ -22,8 +22,9 @@ public class OutboundHandler1 extends ChannelOutboundHandlerAdapter {
 		encoded.writeBytes(response.getBytes());
 		ctx.write(encoded);
 //		ReferenceCountUtil.release(encoded); //不需要释放，flush的时候会释放！！
+		System.out.println(encoded);
 		ctx.flush();
-		
+		System.out.println(encoded);
 	}
 	
 	

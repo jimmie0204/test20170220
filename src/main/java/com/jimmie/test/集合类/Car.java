@@ -7,7 +7,7 @@ public class Car {
 	public Car(){
 		System.out.println("create a car...");
 	}
-
+	
 	public int getName() {
 		return name;
 	}

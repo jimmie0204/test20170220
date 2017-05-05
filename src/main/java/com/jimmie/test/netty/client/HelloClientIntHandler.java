@@ -25,9 +25,23 @@ public class HelloClientIntHandler extends ChannelInboundHandlerAdapter {
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		logger.info("HelloClientIntHandler.channelActive");
-		String msg = "Are you ok?";
+		byte[] req = ("In this chapter you general, we recommend Java Concurrency in Practice by Brian Goetz. His book w"  
+                + "ill give We’ve reached an exciting point—in the next chapter we’ll discuss bootstrapping, the process "  
+                + "of configuring and connecting all of Netty’s components to bring your learned about threading models in ge"  
+                + "neral and Netty’s threading model in particular, whose performance and consistency advantages we discuss"  
+                + "ed in detail In this chapter you general, we recommend Java Concurrency in Practice by Brian Goetz. Hi"  
+                + "s book will give We’ve reached an exciting point—in the next chapter we’ll discuss bootstrapping, the"  
+                + " process of configuring and connecting all of Netty’s components to bring your learned about threading "  
+                + "models in general and Netty’s threading model in particular, whose performance and consistency advantag"  
+                + "es we discussed in detailIn this chapter you general, we recommend Java Concurrency in Practice by Bri"  
+                + "an Goetz. His book will give We’ve reached an exciting point—in the next chapter;the counter is: 1 2222"  
+                + "sdsa ddasd asdsadas dsadasdas" + System.getProperty("line.separator")).getBytes();  
+		
+		ByteBuf encoded = ctx.alloc().buffer(req.length);
+		encoded.writeBytes(req);
+	/*	String msg = "Are you ok?";
 		ByteBuf encoded = ctx.alloc().buffer(4 * msg.length());
-		encoded.writeBytes(msg.getBytes());
+		encoded.writeBytes(msg.getBytes());*/
 		ctx.write(encoded);
 		ctx.flush();
 	}

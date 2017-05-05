@@ -6,6 +6,7 @@ import org.apache.commons.logging.LogFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.util.ReferenceCountUtil;
 
 public class InboundHandler2 extends ChannelInboundHandlerAdapter {
 	private static Log	logger	= LogFactory.getLog(InboundHandler2.class);
@@ -15,16 +16,16 @@ public class InboundHandler2 extends ChannelInboundHandlerAdapter {
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		logger.info("InboundHandler2.channelRead: ctx :"+ ctx+"==="+Thread.currentThread().getName());
 		System.out.println("接受的上一个handler的信息为："+msg);
-		ByteBuf result = (ByteBuf) msg;
-		byte[] result1 = new byte[result.readableBytes()];
-		result.readBytes(result1);
-		String resultStr = new String(result1);
-		System.out.println("Client said:" + resultStr);
-		result.release();
 		
+//		result.release();
+		ReferenceCountUtil.release(msg);
+		
+		String newmsg2 = "in2";
+		ctx.fireChannelRead(newmsg2);
+
 		//最后一个inboundHandler处理业务之后，开始往客户端写数据
-//		ctx.write(msg);
-		ctx.fireChannelRead(resultStr);
+		ctx.writeAndFlush(newmsg2);
+//		ctx.fireChannelRead(resultStr);
 	}
 
 	@Override

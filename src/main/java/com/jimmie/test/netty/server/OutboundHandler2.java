@@ -34,6 +34,6 @@ public class OutboundHandler2 extends ChannelOutboundHandlerAdapter {
 		ctx.writeAndFlush(otherMsg);*/
 		
 		// 执行下一个OutboundHandler
-		super.write(ctx, msg, promise);//第二次往下传递
+		ctx.write(msg, promise);//第二次往下传递
 	}
 }

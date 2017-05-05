@@ -8,6 +8,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.LineBasedFrameDecoder;
 
 public class NettyServer{
 	
@@ -29,9 +30,10 @@ public class NettyServer{
 					ch.pipeline().addLast(new OutboundHandler1());
 					ch.pipeline().addLast(new OutboundHandler2());
 					// 注册两个InboundHandler，执行顺序为注册顺序，所以应该是InboundHandler1 InboundHandler2
+					ch.pipeline().addLast(new LineBasedFrameDecoder(2048));
 					ch.pipeline().addLast(new InboundHandler1());
 					ch.pipeline().addLast(myEx,new InboundHandler2());
-					ch.pipeline().addLast(new HelloServerHandler());
+//					ch.pipeline().addLast(new HelloServerHandler());
 					
 				}
 			});
