@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.google.common.collect.Lists;
+
 public class ListTest {
 
 	
@@ -46,4 +48,19 @@ public class ListTest {
 		System.out.println(list.size());
 	}
 
+	@Test
+	public void test4(){
+		List<Car> list = Lists.newArrayList();
+		Car temp = null;
+		for(int i=0;i<4;i++){
+			temp = new Car();
+			temp.setName(i);
+			list.add(temp);
+		}
+				
+		System.out.println(list.size());
+		System.out.println(list.get(0).getName());
+		System.out.println(list.get(2).getName());
+		System.out.println(list.get(3).getName());
+	}
 }

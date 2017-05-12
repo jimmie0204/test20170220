@@ -1,4 +1,4 @@
-package com.jimmie.test.H2;
+package com.jimmie.test.H2数据库;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

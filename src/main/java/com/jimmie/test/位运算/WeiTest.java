@@ -24,4 +24,22 @@ public class WeiTest {
 		System.out.println(1<<29);
 	}
 	
+	@Test
+	public void test4(){
+		Integer i =10;
+		System.out.println(i.byteValue());
+	}
+	
+	@Test
+	public void test5(){
+		System.out.println( -1L ^ (-1L << 5));
+	}
+	
+	@Test
+	public void test6(){
+		Long i = -1L;
+		System.out.println(Long.toBinaryString( -1L ^ (-1L << 5)));
+		System.out.println(Long.toBinaryString(i).length());
+	}
+	
 }
