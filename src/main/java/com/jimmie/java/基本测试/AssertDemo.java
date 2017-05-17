@@ -1,4 +1,4 @@
-package java.基本测试;
+package com.jimmie.java.基本测试;
 
 
 public class AssertDemo {

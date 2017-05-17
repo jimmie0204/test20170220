@@ -1,4 +1,4 @@
-package java.基本测试;
+package com.jimmie.java.基本测试;
 
 import org.junit.Test;
 
@@ -32,5 +32,10 @@ public class StringTest {
 		String yy = "1111";
 		
 		System.out.println(tt==yy);
+	}
+	
+	@Test
+	public void test5(){
+		System.out.println(Math.min(2.10, -0.90));
 	}
 }
