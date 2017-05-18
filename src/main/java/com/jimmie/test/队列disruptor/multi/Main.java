@@ -47,7 +47,7 @@ public class Main {
         workerPool.start(newFixedThreadPool);  
         
         final CountDownLatch latch = new CountDownLatch(1);
-        for (int i = 0; i < 100; i++) {  
+        for (int i = 0; i < 10; i++) {  
         	final Producer p = new Producer(ringBuffer);
         	newFixedThreadPool.submit(new Runnable() {
 				@Override
@@ -58,7 +58,7 @@ public class Main {
 						e.printStackTrace();
 					}
 					for(int j = 0; j < 10; j ++){
-						p.onData(UUID.randomUUID().toString());
+						p.onData(Integer.toString(j));
 					}
 				}
 			});
@@ -73,7 +73,9 @@ public class Main {
 	}
 	
 	static class IntEventExceptionHandler implements ExceptionHandler {  
-	    public void handleEventException(Throwable ex, long sequence, Object event) {}  
+	    public void handleEventException(Throwable ex, long sequence, Object event) {
+	    	System.out.println("baocullalalall===============");
+	    }  
 	    public void handleOnStartException(Throwable ex) {}  
 	    public void handleOnShutdownException(Throwable ex) {}  
 	} 

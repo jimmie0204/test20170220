@@ -11,11 +11,12 @@ import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 
 public class Main {  
-    public static void main(String[] args) throws InterruptedException {  
+    @SuppressWarnings({ "deprecation", "unchecked" })
+	public static void main(String[] args) throws Exception {  
        
     	long beginTime=System.currentTimeMillis();  
-        int bufferSize=1024;  
-        ExecutorService executor=Executors.newFixedThreadPool(8);  
+        int bufferSize=4;  
+        ExecutorService executor=Executors.newFixedThreadPool(20);  
 
         Disruptor<Trade> disruptor = new Disruptor<Trade>(new EventFactory<Trade>() {  
             @Override  
@@ -34,11 +35,11 @@ public class Main {
         */
         
         //顺序操作
-        /**
+//  processorSequences[i] = batchEventProcessor.getSequence();下一个handler都是以上一个的sequence为栅栏的，具体看源码
         disruptor.handleEventsWith(new Handler1()).
         	handleEventsWith(new Handler2()).
         	handleEventsWith(new Handler3());
-        */
+
         
         //六边形操作. 
         /**
@@ -62,6 +63,7 @@ public class Main {
         
         latch.await();//等待生产者完事. 
        
+//        System.in.read();
         disruptor.shutdown();  
         executor.shutdown();  
         System.out.println("总耗时:"+(System.currentTimeMillis()-beginTime));  

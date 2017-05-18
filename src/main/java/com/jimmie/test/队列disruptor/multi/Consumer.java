@@ -21,6 +21,10 @@ public class Consumer implements WorkHandler<Order>{
 		System.out.println("当前消费者: " + this.consumerId + "，消费信息：" + order.getId());
 //		Thread.sleep(Integer.MAX_VALUE);
 //		count.incrementAndGet();
+		if(order.getId().equalsIgnoreCase("3")){
+			System.out.println("让他报错了================================");
+			throw new Exception("3==baocuo1");
+		}
 		setNum(getNum() + 1);
 	}
 	

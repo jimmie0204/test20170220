@@ -25,6 +25,7 @@ public class TradePublisher implements Runnable {
         for(int i=0;i<LOOP;i++){  
             disruptor.publishEvent(tradeTransloator);  
         }  
+        System.out.println("发布完事！！！！");
         latch.countDown();  
     }  
       
