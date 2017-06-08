@@ -13,7 +13,7 @@ public class Program {
     
     public static final String CHANNEL_NAME = "MyChannel";
     //我这里的Redis是一个集群，192.168.56.101和192.168.56.102都可以使用
-    public static final String REDIS_HOST = "172.16.3.254";
+    public static final String REDIS_HOST = "172.16.30.71";
     public static final int REDIS_PORT = 6378;
     
     private final static Logger LOGGER = LoggerFactory.getLogger(Program.class);

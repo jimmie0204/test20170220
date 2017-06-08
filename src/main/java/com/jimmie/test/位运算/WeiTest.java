@@ -36,6 +36,28 @@ public class WeiTest {
 	}
 	
 	@Test
+	public void test5_1(){
+		System.out.println( Long.toBinaryString(-1L));//-1L
+		System.out.println( Long.toBinaryString(1L));//1L
+		System.out.println( Long.toBinaryString(-1L << 5));//-32L
+		System.out.println( Long.toBinaryString(1L << 5));//32L
+		System.out.println( Long.toBinaryString( -1L ^ (-1L << 5)));//32L
+		System.out.println("==============================");
+		System.out.println( Integer.toBinaryString(-1));//-1
+		System.out.println( Integer.toBinaryString(1));//1
+		System.out.println( Integer.toBinaryString(-1 << 5));//-32
+		System.out.println( Integer.toBinaryString(1 << 5));//32
+		
+	}
+	
+	@Test
+	public void test5_2(){
+		System.out.println( Integer.toBinaryString(63));//1
+		System.out.println( Integer.toBinaryString(32));//1
+		System.out.println( Integer.toBinaryString(63^32));//1
+	}
+	
+	@Test
 	public void test6(){
 		Long i = -1L;
 		System.out.println(Long.toBinaryString( -1L ^ (-1L << 5)));

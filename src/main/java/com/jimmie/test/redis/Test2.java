@@ -11,7 +11,7 @@ public class Test2 {
 	public static Jedis jedis = null;
 	
 	static{
-		JedisPool ll = new JedisPool("172.16.3.254");
+		JedisPool ll = new JedisPool("172.16.30.71");
 		jedis = ll.getResource();
 	}
 	public static void close(){

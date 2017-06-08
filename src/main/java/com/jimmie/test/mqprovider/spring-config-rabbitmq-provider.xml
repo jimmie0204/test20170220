@@ -13,7 +13,7 @@
 
 	
    <!--配置connection-factory，指定连接rabbit server参数-->
-   <rabbit:connection-factory id="connectionFactory" host="172.16.3.254" username="guest"
+   <rabbit:connection-factory id="connectionFactory" host="172.16.30.71" username="guest"
         password="guest" port="5672"/>
 
 

@@ -1,5 +1,7 @@
 package com.jimmie.test.snowflakeID生成器.test1;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Twitter_Snowflake<br>
  * SnowFlake的结构如下(每部分用-分开):<br>
@@ -32,6 +34,9 @@ public class SnowflakeIdWorker {
 
     /** 序列在id中占的位数 */
     private final long sequenceBits = 12L;
+    
+    /** 生成序列的掩码，这里为4095 (0b111111111111=0xfff=4095) */
+    private final long sequenceMask = -1L ^ (-1L << sequenceBits);
 
     /** 机器ID向左移12位 */
     private final long workerIdShift = sequenceBits;
@@ -42,8 +47,6 @@ public class SnowflakeIdWorker {
     /** 时间截向左移22位(5+5+12) */
     private final long timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits;
 
-    /** 生成序列的掩码，这里为4095 (0b111111111111=0xfff=4095) */
-    private final long sequenceMask = -1L ^ (-1L << sequenceBits);
 
     /** 工作机器ID(0~31) */
     private long workerId;
@@ -135,12 +138,13 @@ public class SnowflakeIdWorker {
 
     //==============================Test=============================================
     /** 测试 */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
         long bTime = System.currentTimeMillis();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10; i++) {
             long id = idWorker.nextId();
-            System.out.println(Long.toBinaryString(id));
+//            System.out.println(Long.toBinaryString(id));
+//            TimeUnit.MILLISECONDS.sleep(100);
             System.out.println(id);
         }
         System.out.println("用时："+(System.currentTimeMillis()-bTime));

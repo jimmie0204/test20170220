@@ -6,7 +6,7 @@ public class LockTest {
 
 	public class Count extends Thread{
 		public void run(){
-			Jedis jedis = new Jedis("172.16.3.254", 6379);
+			Jedis jedis = new Jedis("172.16.30.71", 6379);
 			System.out.println(jedis.lpop("rrr"));;
 			jedis.close();
 		}
@@ -14,7 +14,7 @@ public class LockTest {
 //	@TestJunit单元测试不支持多线程
 	public static void main(String[] args) {
 		
-		Jedis jedis = new Jedis("172.16.3.254", 6379);
+		Jedis jedis = new Jedis("172.16.30.71", 6379);
 //		jedis.del("rrr");
 		jedis.rpush("rrr", "1");
 		jedis.rpush("rrr", "2");

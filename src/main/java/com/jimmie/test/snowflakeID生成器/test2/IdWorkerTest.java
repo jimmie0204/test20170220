@@ -18,6 +18,8 @@ public class IdWorkerTest {
         public void run() {
             while (true) {
                 long id = idWorker.nextId();
+                System.out.println(Long.toBinaryString(id));
+                System.out.println(id);
                 if (!set.add(id)) {
                     System.out.println("duplicate:" + id);
                 }

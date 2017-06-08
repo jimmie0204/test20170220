@@ -48,7 +48,7 @@ public class ConcurrentTest {
             final ClientRunnable runnable = new ClientRunnable(barrier, latch );  
             Thread thread = new Thread( runnable, "client-"+ i);  
             thread.start();  
-        }  
+            }  
               
             //测试一段时间不访问后是否执行expire而不是refresh  
             latch.await();  

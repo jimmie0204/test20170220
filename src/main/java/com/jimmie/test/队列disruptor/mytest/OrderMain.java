@@ -43,14 +43,22 @@ public class OrderMain {
 		
 		ExecutorService workeThreadrPool = Executors.newFixedThreadPool(10);
 		
-		@SuppressWarnings("deprecation")
+/*		@SuppressWarnings("deprecation")
 		Disruptor<Order> disruptor = new Disruptor<>(new EventFactory<Order>() {
 
 			@Override
 			public Order newInstance() {
 				return new Order();
 			}
-		}, BUFFER_SIZE, workeThreadrPool, ProducerType.SINGLE, new YieldingWaitStrategy());
+		}, BUFFER_SIZE, workeThreadrPool, ProducerType.SINGLE, new YieldingWaitStrategy());*/
+		
+		Disruptor<Order> disruptor = new Disruptor<>(new EventFactory<Order>() {
+
+			@Override
+			public Order newInstance() {
+				return new Order();
+			}
+		}, BUFFER_SIZE, Executors.defaultThreadFactory(), ProducerType.SINGLE, new YieldingWaitStrategy());
 		
 		
 		disruptor.setDefaultExceptionHandler(new JimmieExceptionHandler());

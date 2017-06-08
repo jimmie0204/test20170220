@@ -3,11 +3,14 @@ package com.jimmie.test.fastjson.test1;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 public class TestMain {
 
@@ -101,4 +104,28 @@ public class TestMain {
 		
 		System.out.println(JSONObject.toJSONString(grade));
 	}
+	
+	//值引用问题（重复引用）
+	@Test
+	public void test6(){
+		Student2 ss = new Student2();
+//		List<Student2> sList = Lists.newArrayList();
+		Map<String, Student2> map = Maps.newHashMap();
+		map.put("1", ss);
+		map.put("2", ss);
+		System.out.println(JSONObject.toJSONString(map,SerializerFeature.DisableCircularReferenceDetect));
+	}
+	
+	//值引用问题（循环引用）
+	@Test
+	public void test7(){
+		Map<String, Object> map = Maps.newHashMap();
+		Map<String, Object> map2 = Maps.newHashMap();
+		map.put("1", map2);
+		map.put("2", map);
+//		System.out.println(JSONObject.toJSONString(map));
+		System.out.println(JSONObject.toJSONString(map,SerializerFeature.DisableCircularReferenceDetect));
+	}
+	
+	
 }
