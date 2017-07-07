@@ -43,9 +43,9 @@ public class WeiTest {
 		System.out.println( Long.toBinaryString(1L << 5));//32L
 		System.out.println( Long.toBinaryString( -1L ^ (-1L << 5)));//32L
 		System.out.println("==============================");
-		System.out.println( Integer.toBinaryString(-1));//-1
+		System.out.println( Integer.toBinaryString(-1));//-1//11111111111111111111111111111111
 		System.out.println( Integer.toBinaryString(1));//1
-		System.out.println( Integer.toBinaryString(-1 << 5));//-32
+		System.out.println( Integer.toBinaryString(-1 << 5));//-32//11111111111111111111111111100000
 		System.out.println( Integer.toBinaryString(1 << 5));//32
 		
 	}

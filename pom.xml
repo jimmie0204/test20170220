@@ -289,6 +289,25 @@
                 <artifactId>h2</artifactId>
                 <version>${h2.version}</version>
             </dependency>
+            
+            <!-- https://mvnrepository.com/artifact/org.db4j/kilim -->
+<dependency>
+    <groupId>org.db4j</groupId>
+    <artifactId>kilim</artifactId>
+    <version>2.0.0-10</version>
+</dependency>
+            
+	<!-- https://mvnrepository.com/artifact/com.google.zxing/core 二维码 -->
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>core</artifactId>
+				<version>3.3.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>javase</artifactId>
+				<version>3.3.0</version>
+			</dependency>
 				
   </dependencies>
   

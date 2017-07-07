@@ -35,7 +35,6 @@ public class AsynTest {
 				return haoshi();
 			}
 		};
-
 		
 		Future<?> submit = executor.submit(future);
 		
