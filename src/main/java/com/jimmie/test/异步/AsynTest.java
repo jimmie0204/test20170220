@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public class AsynTest {
-	private static ExecutorService executor = Executors.newCachedThreadPool();
 	
+	private static ExecutorService executor = Executors.newCachedThreadPool();
 	public static Integer  haoshi() throws InterruptedException{
 		Thread.sleep(5000);
 		return 10;

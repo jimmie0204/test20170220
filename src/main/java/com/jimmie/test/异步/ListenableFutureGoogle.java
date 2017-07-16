@@ -33,7 +33,7 @@ public class ListenableFutureGoogle {
 
 		// 同步获取调用结果
 
-		try {
+		/*try {
 
 			System.out.println(listenableFuture.get());
 
@@ -46,10 +46,10 @@ public class ListenableFutureGoogle {
 			e1.printStackTrace();
 
 		}
-
+*/
 		// 第一种方式，实际就是把future.get()的阻塞操作异步执行
 
-		listenableFuture.addListener(new Runnable() {
+		listenableFuture.addListener(new Runnable() {//添加listener，就是异步起一个线程获取future.get()结果
 
 			@Override
 
