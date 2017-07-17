@@ -1,11 +1,11 @@
 package com.jimmie.test.nio.block;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.net.InetSocketAddress;
-import java.io.IOException;
 
 /**
  * SumServer.java

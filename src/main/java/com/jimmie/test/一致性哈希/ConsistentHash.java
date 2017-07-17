@@ -2,8 +2,6 @@ package com.jimmie.test.一致性哈希;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;

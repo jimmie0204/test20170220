@@ -1,7 +1,5 @@
 package com.jimmie.test.redis.pubsub;
 
-import java.util.ResourceBundle;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

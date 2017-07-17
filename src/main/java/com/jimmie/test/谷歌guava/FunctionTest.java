@@ -8,7 +8,6 @@ import org.junit.Test;
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 public class FunctionTest {

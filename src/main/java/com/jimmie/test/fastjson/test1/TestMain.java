@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 public class TestMain {

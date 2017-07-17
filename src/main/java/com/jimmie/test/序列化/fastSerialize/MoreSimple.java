@@ -1,7 +1,6 @@
 package com.jimmie.test.序列化.fastSerialize;
 
 import java.io.Serializable;
-import java.util.Map;
 
 public class MoreSimple  implements Serializable
 {  

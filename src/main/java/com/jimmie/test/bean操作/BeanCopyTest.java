@@ -1,8 +1,8 @@
 package com.jimmie.test.bean操作;
 
-import net.sf.cglib.beans.BeanCopier;
-
 import org.junit.Test;
+
+import net.sf.cglib.beans.BeanCopier;
 
 public class BeanCopyTest {
 

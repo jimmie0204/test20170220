@@ -1,8 +1,5 @@
 package com.jimmie.test.序列化.myserial;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.util.ReferenceCountUtil;
-
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,6 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import io.netty.buffer.ByteBuf;
+import io.netty.util.ReferenceCountUtil;
 /**
  * 自定义序列化接口
  * @author -琴兽-

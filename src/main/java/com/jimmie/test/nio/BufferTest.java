@@ -1,6 +1,6 @@
 package com.jimmie.test.nio;
 
-import java.nio.*;
+import java.nio.CharBuffer;
 
 public class BufferTest {
 

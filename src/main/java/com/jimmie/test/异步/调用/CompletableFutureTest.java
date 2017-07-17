@@ -16,9 +16,6 @@ import java.util.function.Supplier;
 
 import org.junit.Test;
 
-import scala.inline;
-import scala.collection.generic.BitOperations.Int;
-
 /**
  * 因此，你可以根据方法的参数的类型来加速你的记忆。
  * Runnable类型的参数会忽略计算的结果，

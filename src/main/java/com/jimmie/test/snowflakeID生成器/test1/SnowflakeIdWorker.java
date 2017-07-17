@@ -1,7 +1,5 @@
 package com.jimmie.test.snowflakeID生成器.test1;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * Twitter_Snowflake<br>
  * SnowFlake的结构如下(每部分用-分开):<br>

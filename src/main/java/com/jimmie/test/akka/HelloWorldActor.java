@@ -1,6 +1,5 @@
 package com.jimmie.test.akka;
 
-import akka.actor.ActorRef;
 import akka.actor.UntypedActor;
 
 public class HelloWorldActor extends UntypedActor

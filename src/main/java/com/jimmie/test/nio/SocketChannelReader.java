@@ -1,10 +1,10 @@
 package com.jimmie.test.nio;
 
+import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
-import java.net.InetSocketAddress;
-import java.io.IOException;
 
 public class SocketChannelReader {
 

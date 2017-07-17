@@ -1,10 +1,10 @@
 package com.jimmie.test.序列化.myserial;
 
+import java.nio.ByteOrder;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.buffer.PooledByteBufAllocator;
-
-import java.nio.ByteOrder;
 /**
  * buff工厂
  * @author -琴兽-

@@ -5,7 +5,6 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 
 import javax.imageio.ImageIO;
-import javax.imageio.stream.FileImageOutputStream;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;

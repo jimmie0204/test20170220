@@ -1,7 +1,5 @@
 package com.jimmie.test.fastjson;
 
-import java.util.Date;
-
 public class ReturnItemInfo {
 
 	/**原料ID**/
