@@ -19,7 +19,7 @@ public class OutboundHandler2 extends ChannelOutboundHandlerAdapter {
 	@Override
 	public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
 		logger.info("OutboundHandler2.write==="+Thread.currentThread().getName());
-		System.out.println("接受的上一个handler的信息为："+msg);
+		System.out.println("OutboundHandler2接受的上一个handler的信息为："+msg);
 		/*String response = "我他妈先发一个I am ok!";
 		ByteBuf encoded = ctx.alloc().buffer(4 * response.length());
 		encoded.writeBytes(response.getBytes());

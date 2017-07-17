@@ -1,0 +1,12 @@
+package com.jimmie.test.groovy;
+
+
+public class Jimmie {
+
+	
+	public String execute(String text) {
+		
+		return text;
+	}
+
+}

@@ -14,18 +14,18 @@ public class InboundHandler1 extends ChannelInboundHandlerAdapter {
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		logger.info("InboundHandler1.channelRead: ctx :" + ctx+"==="+Thread.currentThread().getName());
-		System.out.println("接受的上一个handler的信息为："+msg);
+		System.out.println("InboundHandler1接受的上一个handler的信息为："+msg);
 		
 		ByteBuf result = (ByteBuf) msg;
-		System.out.println("===================本次刻度长度："+result.readableBytes());
+		System.out.println("===================InboundHandler1本次刻度长度："+result.readableBytes());
 		byte[] result1 = new byte[result.readableBytes()];
 		result.readBytes(result1);
 		String resultStr = new String(result1);
-		System.out.println("Client said:" + resultStr);
+		System.out.println("InboundHandler1==Client said:" + resultStr);
 		ReferenceCountUtil.release(msg);
 		
-		System.out.println(msg);
-		System.out.println(result);
+//		System.out.println(msg);
+//		System.out.println(result);
 		
 		String newmsg1 = "in1";
 		// 通知执行下一个InboundHandler

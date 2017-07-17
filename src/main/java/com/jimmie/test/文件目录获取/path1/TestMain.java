@@ -103,8 +103,10 @@ public class TestMain {
 	public void classWay2(){
 		InputStream in = TestMain.class.getResourceAsStream("../aa.txt");
 		InputStream in2 = TestMain.class.getResourceAsStream("../path2/cc.txt");
+		InputStream in3 = TestMain.class.getResourceAsStream("bb.txt");
 		print(in);
 		print(in2);
+		print(in3);
 	}
 	
 	@Test
