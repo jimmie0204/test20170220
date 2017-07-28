@@ -1,10 +1,10 @@
 package com.jimmie.test.异步;
 
-public interface CallBack {
+public interface CallBack<V> {
 
-	public void cancel();
+	public void onCancel();
 	
-	public void success();
+	public void onSuccess(V result);
 	
-	public void fail();
+	public void onFailure(Throwable t);
 }

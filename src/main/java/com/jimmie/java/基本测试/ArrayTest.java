@@ -10,5 +10,6 @@ public class ArrayTest {
 	public void test1(){
 		Student[] s = new Student[5];
 		System.out.println(s.length);
+		System.out.print("");
 	}
 }
