@@ -126,5 +126,20 @@ public class TestMain {
 		System.out.println(JSONObject.toJSONString(map,SerializerFeature.DisableCircularReferenceDetect));
 	}
 	
+	//数组
+	@Test
+	public void test8(){
+		GradeArray tt  = new GradeArray();
+		tt.setCount(2);
+		tt.setName("sdsd");
+		tt.setStudentId(new Long[]{1L,45L});
+		List<Integer> ages = new ArrayList<>();
+		ages.add(23);
+		ages.add(33);
+		tt.setAges(ages);
+		System.out.println(JSONObject.toJSONString(tt));
+		
+	}
+	
 	
 }

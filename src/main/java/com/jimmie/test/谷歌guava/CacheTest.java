@@ -120,8 +120,9 @@ public class CacheTest {
 
 		System.out.println(cache.get("jimmie"));
 
-		Thread.sleep(2000);
+		Thread.sleep(1500);
 		System.out.println(cache.get("jimmie"));
+		Thread.sleep(1500);
 //		Thread.sleep(3000);
 		System.out.println(cache.get("jimmie"));
 		System.in.read();
@@ -155,13 +156,13 @@ public class CacheTest {
 
 				});
 		
-
+//		cache.put("jimmie", "hhhhh");
 		System.out.println(cache.get("jimmie"));
 		System.out.println(cache.get("jimmie"));
 
 		Thread.sleep(2000);
 		System.out.println(cache.get("jimmie"));
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		System.out.println(cache.get("jimmie"));
 		System.in.read();
 
@@ -180,7 +181,7 @@ public class CacheTest {
 	 */
 	@Test
 	public void test6() throws InterruptedException, ExecutionException, IOException{
-		LoadingCache<String, Object> cache = CacheBuilder.newBuilder()
+		LoadingCache<String, Object> cache = CacheBuilder.newBuilder().weakValues()
 				.refreshAfterWrite(2, TimeUnit.SECONDS)
 				.build(new CacheLoader<String, Object>(){
 

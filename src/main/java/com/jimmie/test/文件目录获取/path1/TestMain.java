@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import org.junit.Test;
 
@@ -103,7 +104,7 @@ public class TestMain {
 	public void classWay2(){
 		InputStream in = TestMain.class.getResourceAsStream("../aa.txt");
 		InputStream in2 = TestMain.class.getResourceAsStream("../path2/cc.txt");
-		InputStream in3 = TestMain.class.getResourceAsStream("bb.txt");
+		InputStream in3 = TestMain.class.getResourceAsStream("bb2.txt");
 		print(in);
 		print(in2);
 		print(in3);
@@ -143,5 +144,14 @@ public class TestMain {
 		System.out.println(loader3);
 		System.out.println(loader4);
 	}
+	
+	@Test
+	public void loadWay6(){
+//		InputStream in = ClassLoader.getSystemResourceAsStream("com/jimmie/test/文件目录获取/path1/bb.txt");
+		ResourceBundle bundle = ResourceBundle.getBundle("redis");
+	}
+	
+	
+	
 
 }

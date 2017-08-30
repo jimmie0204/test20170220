@@ -1,4 +1,4 @@
-package com.jimmie.test.并发;
+package com.jimmie.test.线程.AQS;
 
 import java.util.concurrent.Semaphore;
 

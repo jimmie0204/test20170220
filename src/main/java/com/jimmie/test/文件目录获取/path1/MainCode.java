@@ -1,0 +1,22 @@
+package com.jimmie.test.文件目录获取.path1;
+
+import java.io.InputStream;
+
+public class MainCode {
+
+	public static void main(String[] args) {
+		try {
+		    InputStream in3 = TestMain.class.getResourceAsStream("bb2.txt");
+		    String oldS = Print.print(in3);
+		    System.out.println(oldS);
+		    System.out.println(oldS.replaceAll("u'", "'"));
+		    String s1 = "\u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53:\u6587\u6848\u4f53:\u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53:\u6587\u6848\u4f53: \u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53:\u6587\u6848\u4f53:\u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53:\u6587\u6848\u4f53: \u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53:\u6587\u6848\u4f53:\u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53:\u6587\u6848\u4f53: \u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53:\u6587\u6848\u4f53:\u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53:\u6587\u6848\u4f53: \u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53:\u6587\u6848\u4f53:\u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53:\u6587\u6848\u4f53: \u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53:\u6587\u6848\u4f53:\u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53:\u6587\u6848\u4f53: \u6587\u6848\u4f53\u5b57\u6570\u9650\u5236\u6587\u6848\u4f53";
+//		    String s1 = oldS.replaceAll("u'", "");
+		    byte[] converttoBytes = s1.getBytes("UTF-8");
+		    String s2 = new String(converttoBytes, "UTF-8");
+		    System.out.println(s2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

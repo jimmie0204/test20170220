@@ -38,9 +38,9 @@ public class Student implements Serializable{
 		
 	}
 	
-	@Override
+/*	@Override
 	public String toString(){
 		return age+":"+name;
 		
-	}
+	}*/
 }
