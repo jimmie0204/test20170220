@@ -110,4 +110,12 @@ public class StringTest {
 		}
 	}
 	
+	@Test
+	public void test13(){
+		System.out.println("深圳市都市绿菜园活体蔬菜种植有限公司".length());
+		System.out.println("河北福成五丰\n食品股份有限公司燕郊肉类制品分公司".substring(0, 18));
+		System.out.println("河北福成五丰食品股份有限公司燕郊肉类制品分公司".substring(0, 18).length());
+	}
+	
+	
 }

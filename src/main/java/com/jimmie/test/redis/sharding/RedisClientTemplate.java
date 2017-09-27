@@ -834,6 +834,22 @@ public class RedisClientTemplate {
 		}
 		return false;
 	}
+	
+	public boolean set(String key, String value,String nxxx,String expx, long time) {
+		ShardedJedis shardedJedis = null;
+		try {
+			shardedJedis = shardedJedisPool.getResource();
+			shardedJedis.set(key, value, nxxx, expx, time);
+			return true;
+		} catch (Exception ex) {
+			logger.error("set error.", ex);
+			returnBrokenResource(shardedJedis);
+		} finally {
+			returnResource(shardedJedis);
+		}
+		return false;
+	}
+
 
 	public String get(String key, String defaultValue) throws Exception {
 		ShardedJedis shardedJedis = null;

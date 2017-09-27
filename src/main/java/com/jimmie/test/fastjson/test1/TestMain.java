@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.google.common.collect.Maps;
@@ -28,6 +29,14 @@ public class TestMain {
 		grade.setSlist(list);
 
 		System.out.println(JSONObject.toJSONString(grade));
+	}
+	
+	@Test
+	public void test1(){
+		Student s1 = new Student(1,"a");
+		System.out.println(JSONObject.toJSONString(s1));
+		Student3 s3 = JSON.parseObject(JSONObject.toJSONString(s1), Student3.class);
+		System.out.println(s3.getAge());
 	}
 	
 	@Test

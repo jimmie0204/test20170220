@@ -56,4 +56,12 @@ public class BigDecimalTest {
 	public void test8(){
 		System.out.println(BigDecimal.ONE.compareTo(BigDecimal.ZERO));
 	}
+	
+	@Test
+	public void test9(){
+		BigDecimal paymengPercentage = new BigDecimal(100 ).subtract(new BigDecimal(1.5)).subtract(BigDecimal.ZERO).subtract(BigDecimal.ZERO).divide(new BigDecimal(100),2,BigDecimal.ROUND_HALF_UP);
+
+		System.out.println(paymengPercentage);
+	}
+
 }

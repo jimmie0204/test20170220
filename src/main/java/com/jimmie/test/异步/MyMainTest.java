@@ -16,7 +16,8 @@ public class MyMainTest {
 
 			@Override
 			public Integer call() throws Exception {
-				Thread.sleep(50000);
+//				Thread.sleep(50000);
+				int i=1/0;
 				return 10;
 			}
 		};

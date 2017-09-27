@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
+import com.jimmie.test.bean操作.Student;
 
 public class ImmutableTest {
 
@@ -18,6 +20,16 @@ public class ImmutableTest {
 		
 		copyOf.add("c");
 //		copyOf.clear();
+	}
+	
+	@Test
+	public void testmap(){
+		Student s = new Student();
+		s.setName("sd");
+		s.setAge(12);
+		ImmutableMap<String, Student> map = ImmutableMap.of("s1", s);
+		s.setAge(13);
+		System.out.println("=====success=========="+map.get("s1").getAge());
 	}
 	
 }
