@@ -71,8 +71,8 @@ public class Main {
         System.out.println("总数:" + consumers[2].getNum() );
 	}
 	
-	static class IntEventExceptionHandler implements ExceptionHandler {  
-	    public void handleEventException(Throwable ex, long sequence, Object event) {
+	static class IntEventExceptionHandler implements ExceptionHandler<Order> {  
+	    public void handleEventException(Throwable ex, long sequence, Order event) {
 	    	System.out.println("baocullalalall===============");
 	    }  
 	    public void handleOnStartException(Throwable ex) {}  

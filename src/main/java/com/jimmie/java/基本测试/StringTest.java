@@ -117,5 +117,11 @@ public class StringTest {
 		System.out.println("河北福成五丰食品股份有限公司燕郊肉类制品分公司".substring(0, 18).length());
 	}
 	
+	@Test
+	public void test14(){
+		String ss = "深圳市瑞奔进出口服务有限公司，结算单号：JS20170906423522000715。\n采购结算金额22616.00元，\n采购含税金额22616.00元，\n采退含税金额0.00元，\n特殊扣款金额0.00元。";
+		System.out.println(ss);
+	}
+	
 	
 }

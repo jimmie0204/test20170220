@@ -122,8 +122,8 @@ public class CacheTest {
 
 		Thread.sleep(1500);
 		System.out.println(cache.get("jimmie"));
-		Thread.sleep(1500);
-//		Thread.sleep(3000);
+//		Thread.sleep(1500);
+		Thread.sleep(3000);
 		System.out.println(cache.get("jimmie"));
 		System.in.read();
 	}

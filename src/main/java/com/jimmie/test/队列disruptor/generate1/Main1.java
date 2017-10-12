@@ -59,13 +59,13 @@ public class Main1 {
         //把消息处理器提交到线程池  
         executors.submit(transProcessor2);  */
         
-        //如果存在多个消费者 那重复执行上面3行代码 把TradeHandler换成其它消费者类  
+        //如果存在多个消费者 那重复执行上面3行代码 把TradeHandler换成其它消费者类  ，一个批量通知完了再通知下一个
           
         Future<?> future= executors.submit(new Callable<Void>() {  
             @Override  
             public Void call() throws Exception {  
                 long seq;  
-                for(int i=0;i<2;i++){  
+                for(int i=0;i<20;i++){  
                     seq = ringBuffer.next();//占个坑 --ringBuffer一个可用区块  
                     ringBuffer.get(seq).setPrice(Math.random()*9999);//给这个区块放入 数据 
                     ringBuffer.publish(seq);//发布这个区块的数据使handler(consumer)可见  
@@ -78,5 +78,6 @@ public class Main1 {
         Thread.sleep(1000);//等上1秒，等消费都处理完成  
         transProcessor.halt();//通知事件(或者说消息)处理器 可以结束了（并不是马上结束!!!）  
         executors.shutdown();//终止线程  
+        System.out.println("executors已结束");
     }  
 }  

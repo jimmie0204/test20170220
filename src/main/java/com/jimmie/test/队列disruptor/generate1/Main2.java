@@ -34,7 +34,7 @@ public class Main2 {
           
         workerPool.start(executor);  
         
-/*        WorkHandler<Trade> handler2 = new TradeHandler2();  
+/*       WorkHandler<Trade> handler2 = new TradeHandler2();  
 
         @SuppressWarnings("unchecked")
 		WorkerPool<Trade> workerPool2 = new WorkerPool<Trade>(ringBuffer, sequenceBarrier, new IgnoreExceptionHandler(), handler2);  
