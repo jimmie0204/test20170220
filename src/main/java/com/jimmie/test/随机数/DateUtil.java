@@ -366,12 +366,7 @@ public class DateUtil {
 	    cal.setTime(date); 
 	    cal.add(Calendar.WEEK_OF_YEAR, type);
 	    cal.set(Calendar.DAY_OF_WEEK, dayOfWeek+1); 
-	    try {
-			return ymdsdf.parse(ymdsdf.format(cal.getTime()));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-	    return null;
+	    return cal.getTime();
 	}
 	
 	/**
@@ -383,12 +378,7 @@ public class DateUtil {
 	    cal.setTime(date); 
 	    cal.add(Calendar.WEEK_OF_YEAR, weekChange+1);
 	    cal.set(Calendar.DAY_OF_WEEK, 1); 
-	    try {
-			return ymdsdf.parse(ymdsdf.format(cal.getTime()));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-	    return null;
+	    return cal.getTime();
 	}
 	
 	/**
