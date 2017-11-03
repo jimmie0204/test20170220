@@ -123,5 +123,11 @@ public class StringTest {
 		System.out.println(ss);
 	}
 	
+	@Test
+	public void test15(){
+		System.out.println('A'==65);//true;unicode编码
+//		System.out.println("A"==65);//异常
+	}
+	
 	
 }
