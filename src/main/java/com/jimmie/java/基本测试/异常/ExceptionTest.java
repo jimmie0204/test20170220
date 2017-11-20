@@ -8,12 +8,13 @@ public class ExceptionTest {
 	}
 	
 	public void fun2(){
-		try {
+/*		try {
 			fun1();
 		} catch (Exception e) {
 			System.out.println("catch a 异常。。");
 //			return ;
-		}
+		}*/
+		fun1();
 		System.out.println("我在cath之后。。。。输出");
 	}
 	public static void main(String[] args) {

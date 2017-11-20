@@ -8,7 +8,7 @@ import java.nio.channels.FileChannel;
 public class ReadAndShow
 {
   static public void main( String args[] ) throws Exception {
-    FileInputStream fin = new FileInputStream( "readandshow.txt" );
+    FileInputStream fin = new FileInputStream( "D:\\/filetest\\/readandshow.txt" );
     FileChannel fc = fin.getChannel();
 
     ByteBuffer buffer = ByteBuffer.allocate( 1024 );

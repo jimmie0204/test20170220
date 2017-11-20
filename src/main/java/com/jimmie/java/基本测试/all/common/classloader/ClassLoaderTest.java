@@ -19,7 +19,7 @@ public class ClassLoaderTest {
 //        }
 
 //        loadExtLibClass();
-        loadClass();
+//        loadClass();
         // mock String class
 //        mockStringClass();
 
@@ -105,7 +105,7 @@ public class ClassLoaderTest {
     private static void mockStringClass() throws ClassNotFoundException {
         Class<?> stringClass = Class.forName("java.lang.String");
         try {
-            Method printNameMethod = stringClass.getMethod("printName", null); // NoSuchMethodException
+            Method printNameMethod = stringClass.getMethod("print", null); // NoSuchMethodException
             System.out.printf("printNameMethod = %s", (printNameMethod == null));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
