@@ -60,8 +60,65 @@ public class WeiTest {
 	@Test
 	public void test6(){
 		Long i = -1L;
+		System.out.println(Long.toBinaryString( -1L ));
+		System.out.println(Long.toBinaryString(-1L << 5));
 		System.out.println(Long.toBinaryString( -1L ^ (-1L << 5)));
 		System.out.println(Long.toBinaryString(i).length());
 	}
+	
+	@Test
+	public void test6_2(){
+		int a=-5;
+		System.out.println(Integer.toBinaryString(a));
+		System.out.println( Integer.toBinaryString(a >> 1));
+		System.out.println(a >> 1);
+		System.out.println( Integer.toBinaryString(a >>> 1));
+		System.out.println(a >>> 1);
+	}
+	
+	@Test
+	public void test7(){
+		int n=13;
+		System.out.println( Integer.toBinaryString(n));//原码
+		System.out.println( Integer.toBinaryString(~n));//反码
+		System.out.println( Integer.toBinaryString(-n));//补码
+
+		System.out.println(-n&n );
+	}
+	
+	@Test
+	public void test8(){
+		int n=13;
+		System.out.println( Integer.toBinaryString(n));//原码
+		System.out.println( Integer.toBinaryString(~n));//反码
+		System.out.println( Integer.toBinaryString(-n));//补码
+		System.out.println( Integer.toBinaryString(~n+1));//补码
+
+		System.out.println(~(~n+1) +1);
+	}
+	
+	 /**
+     * 输出一个int的二进制数
+     * @param num
+     */
+    private static void printInfo(int num){
+        System.out.println(Integer.toBinaryString(num));
+    }
+	@Test
+	public void test9(){
+		 int number = 2<<32-1;
+	        //原始数二进制
+	        printInfo(number);
+	        number = number << 1;
+	        //左移一位
+	        printInfo(number);
+	        number = 2<<32-1;
+	        number = number >> 1;
+	        //右移一位
+	        printInfo(number);
+	        byte a = 'A';
+	        System.out.println(a-1);
+	}
+	
 	
 }

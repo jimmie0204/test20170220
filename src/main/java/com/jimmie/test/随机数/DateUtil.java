@@ -12,10 +12,14 @@ public class DateUtil {
 	public static final String Y_M_D = "yyyy-MM-dd";
 	
 	public static final String Y_M_D_H_M_S = "yyyy-MM-dd HH:mm:ss";
+	
+	public static final String Y_M_D_H_M = "yyyy-MM-dd HH:mm:00";
 
 	public static final String YMDHMS = "yyyyMMddHHmmss";
 	
 	public static SimpleDateFormat ymdsdf = new SimpleDateFormat("yyyy-MM-dd");
+	
+	public static SimpleDateFormat ymdhmsdf = new SimpleDateFormat(Y_M_D_H_M_S);
 	
 	public static String date2Str(Date date,String pattern) {
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
@@ -357,13 +361,14 @@ public class DateUtil {
 	
 	
 	/**
-	 * 根据日期获取下几周的周几(中国的周一到周六，周日不是此方法)
-	 * 例如：date = now, type =2 , dayOfWeek= 5
+	 * 根据日期获取下几周的周几
+	 * 例如：date = now, type =2 , dayOfWeek= 4
 	 * 当前日期加两周的那周四
 	 */
 	public static Date getNextWeekDays(Date date , int type , int dayOfWeek){
 		Calendar cal = Calendar.getInstance(); 
 	    cal.setTime(date); 
+	    cal.setFirstDayOfWeek(Calendar.MONDAY);
 	    cal.add(Calendar.WEEK_OF_YEAR, type);
 	    cal.set(Calendar.DAY_OF_WEEK, dayOfWeek+1); 
 	    return cal.getTime();
@@ -410,7 +415,7 @@ public class DateUtil {
 	 * @throws ParseException 
 	 */
 	public static Date getSomeMonthSomeDay(Date date, int monthChange, int day){
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat(Y_M_D_H_M_S);
 		Calendar cal = Calendar.getInstance(); 
 	    cal.setTime(date); 
 	    cal.add(Calendar.MONTH, monthChange);
@@ -445,6 +450,66 @@ public class DateUtil {
 		
 	}
 	
+	/**
+	 * @param date  日期
+	 * @param hour 小时数
+	 * 
+	 * 获取当前日期的的23:59:59
+	 * @return
+	 */
+	public static Date getLastSecond(Date date) {
+		Calendar cal = Calendar.getInstance();
+		if(date != null) 
+			cal.setTime(date);
+		
+		cal.set(Calendar.HOUR_OF_DAY, 23);
+		cal.set(Calendar.MINUTE,59);
+		cal.set(Calendar.SECOND, 59);
+		cal.set(Calendar.MILLISECOND, 59);
+		return cal.getTime();
+		
+	}
+	
+	/**
+	 * 根据日期获取一年中的第几周
+	 */
+	public static int getWeeksNum(Date date){
+		Calendar cal = Calendar.getInstance(); 
+	    cal.setTime(date); 
+	    cal.setFirstDayOfWeek(Calendar.MONDAY);
+	    return cal.get(Calendar.WEEK_OF_YEAR);
+	}
+	
+	/**
+	 * 根据日期获取年份
+	 */
+	public static int getYear(Date date){
+		Calendar cal = Calendar.getInstance(); 
+	    cal.setTime(date); 
+	    return cal.get(Calendar.YEAR);
+	}
+	
+	/**
+	 * 根据日期获取年份
+	 */
+	public static int getMonth(Date date){
+		Calendar cal = Calendar.getInstance(); 
+	    cal.setTime(date); 
+	    return cal.get(Calendar.MONTH)+1;
+	}
+	
+	public static Date getDateFormat(Date date,String format){
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		Calendar cal = Calendar.getInstance(); 
+	    cal.setTime(date==null?new Date():date); 
+	    try {
+			return sdf.parse(sdf.format(cal.getTime()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	    return null;
+	}
+	
 	
 	public static void main(String[] args) throws ParseException {
 /*		System.out.println(getPreMFirstDay());
@@ -465,7 +530,23 @@ public class DateUtil {
 		System.out.println(getDateForYMD(yesterday));
 		System.out.println(DateUtil.getDateAfter(today, 4));
 		System.out.println(Integer.valueOf(String.valueOf(30315).substring(3)));*/
-		System.out.println(getHourBegin(new Date(),0));
+/*		System.out.println(getHourBegin(new Date(),0));
+		System.out.println(getNextWeekDays(new Date(),-1,1));
+		System.out.println(getNextWeekDays(new Date(),-1,7));
+		System.out.println(getSomeMonthSomeDay(new Date(),0,15));*/
+//		System.out.println(getLastSecond(new Date()));
+//		System.out.println(DateUtil.str2Date("2017-04-24 00:00:00", DateUtil.Y_M_D_H_M_S));
+//		System.out.println(DateUtil.getNextWeekDays(new Date(), 0, 1));
+//		System.out.println(Integer.parseInt(String.valueOf("300615").substring(4)));
+//		System.out.println(DateUtil.getDateAfter(new Date(), 0));
 		
+		System.out.println(getWeeksNum(DateUtil.str2Date("2017-10-30 00:00:00", DateUtil.Y_M_D_H_M_S)));
+		System.out.println(getMonth(DateUtil.str2Date("2017-02-01 00:00:00", DateUtil.Y_M_D_H_M_S)));
+		System.out.println(getYear(new Date()));
+		Date currentTime = new Date();
+		System.out.println(getDateAfter(currentTime, 1));
+		System.out.println(getDateFormat(currentTime, DateUtil.Y_M_D_H_M));
+		
+		System.out.println(getDateForYMD(new Date()));
 	}
 }

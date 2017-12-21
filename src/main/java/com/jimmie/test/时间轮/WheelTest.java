@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 public class WheelTest {
 	
 	public static void main(String[] args) throws Exception{
-		TimingWheelAsynExpiredEmptyQ<String> w = new TimingWheelAsynExpiredEmptyQ<String>(1,3,TimeUnit.SECONDS);
+		TimingWheelAsynExpiredEmptyQ<String> w = new TimingWheelAsynExpiredEmptyQ<String>(1,8,TimeUnit.SECONDS);
 		
 		w.addExpirationListener(new JimmieListener());
 		
@@ -14,7 +14,7 @@ public class WheelTest {
 		w.add("werwet");
 		w.add("548");
 		
-//		TimeUnit.SECONDS.sleep(1);
+		TimeUnit.SECONDS.sleep(3);
 		
 		w.add("548");
 		w.add("oppp");

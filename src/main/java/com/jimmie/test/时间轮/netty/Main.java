@@ -9,10 +9,10 @@ public class Main implements TimerTask{
 
     public static void main(String[] args) {
         TimerTask timerTask = new Main();
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 10; i++) {
 //            timer.newTimeout(timerTask, i+1, TimeUnit.SECONDS, "" + i );
-            timer.newTimeout(timerTask, 2, TimeUnit.SECONDS, "" + i );
-//            timer.newTimeout(timerTask, (i+1)%4, TimeUnit.SECONDS, "" + i );
+//            timer.newTimeout(timerTask, 2, TimeUnit.SECONDS, "" + i );
+            timer.newTimeout(timerTask, (i+1)%4, TimeUnit.SECONDS, "" + i );
         }
         System.out.println("所有任务已添加，over");
     }
