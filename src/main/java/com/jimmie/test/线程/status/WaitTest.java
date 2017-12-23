@@ -16,7 +16,7 @@ public class WaitTest{
 		WaitTest wt = new WaitTest();
 		MyThread myThread = new MyThread(wt,"jimmie-1");
 		myThread.start();;
-		new Thread(new Runnable() {
+		/*new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
@@ -28,7 +28,7 @@ public class WaitTest{
 					e.printStackTrace();
 				}
 			}
-		}).start();;
+		}).start();;*/
 		
 	}
 	

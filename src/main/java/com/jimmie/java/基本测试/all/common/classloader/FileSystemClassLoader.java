@@ -16,6 +16,12 @@ public class FileSystemClassLoader extends ClassLoader {
             return defineClass(name, classData, 0, classData.length);
         }
     }
+    
+    @Override
+    public Class<?> loadClass(String paramString) throws ClassNotFoundException {
+    	System.out.println("用FileSystemClassLoader自己的loadClass=======================");
+    	return super.loadClass(paramString);
+    }
 
     private byte[] loadClassDataFromFile(String name) {
 //        String localPath = "/Users/Jay" + File.separatorChar + "Desktop" + File.separatorChar + name.replace('.', File.separatorChar) + ".class";

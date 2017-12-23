@@ -6,17 +6,18 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 
 public class CopyFile
 {
   static public void main( String args[] ) throws Exception {
-    if (args.length<2) {
+/*    if (args.length<2) {
       System.err.println( "Usage: java CopyFile infile outfile" );
       System.exit( 1 );
-    }
+    }*/
 
-    String infile = args[0];
-    String outfile = args[1];
+    String infile = "D:\\/filetest\\/readandshow.txt";
+    String outfile = "D:\\/filetest\\/readandshow2.txt";
 
     FileInputStream fin = new FileInputStream( infile );
     FileOutputStream fout = new FileOutputStream( outfile );
@@ -34,7 +35,7 @@ public class CopyFile
       if (r==-1) {
         break;
       }
-
+//      System.out.println(new String(buffer.array(),Charset.defaultCharset()));//打印
       buffer.flip();
 
       fcout.write( buffer );
