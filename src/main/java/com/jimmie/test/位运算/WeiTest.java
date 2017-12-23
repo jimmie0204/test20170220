@@ -64,4 +64,14 @@ public class WeiTest {
 		System.out.println(Long.toBinaryString(i).length());
 	}
 	
+	@Test
+	public void test7(){
+		int a=3,b=4;
+		int c=a^a;
+		a=a^b;
+		b=b^a;
+		a=a^b;
+		System.out.println("a="+a+",b="+b);
+	}
+	
 }
