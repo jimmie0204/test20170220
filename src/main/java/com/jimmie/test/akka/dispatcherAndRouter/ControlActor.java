@@ -7,10 +7,6 @@ import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.actor.UntypedActor;
 import akka.routing.FromConfig;
-import akka.routing.RoundRobinPool;
-import akka.routing.RoundRobinRoutingLogic;
-import akka.routing.Router;
-import akka.routing.RouterActor;
 
 public class ControlActor extends UntypedActor {
 

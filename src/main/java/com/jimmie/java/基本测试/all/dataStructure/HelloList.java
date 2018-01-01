@@ -2,8 +2,6 @@ package com.jimmie.java.基本测试.all.dataStructure;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Jay on 4/17/17.

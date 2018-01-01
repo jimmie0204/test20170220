@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.http.client.utils.DateUtils;
 import org.junit.Test;
 
 import com.jimmie.test.随机数.DateUtil;

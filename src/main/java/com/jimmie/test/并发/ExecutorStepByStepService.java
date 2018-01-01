@@ -1,9 +1,6 @@
 package com.jimmie.test.并发;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Vector;
-import java.util.concurrent.AbstractExecutorService;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Future;

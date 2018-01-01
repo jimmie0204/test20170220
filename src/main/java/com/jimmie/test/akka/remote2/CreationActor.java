@@ -1,7 +1,7 @@
 package com.jimmie.test.akka.remote2;
 
-import akka.actor.ActorRef;  
-import akka.actor.Props;  
+import akka.actor.ActorRef;
+import akka.actor.Props;
 import akka.actor.UntypedActor;  
   
 public class CreationActor extends UntypedActor {  

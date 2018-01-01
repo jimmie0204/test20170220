@@ -2,10 +2,7 @@ package com.jimmie.java.数据结构和算法.区间;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 public class RegionMerge {
 	

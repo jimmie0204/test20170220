@@ -1,7 +1,5 @@
 package com.jimmie.test.线程.status;
 
-import java.util.concurrent.locks.LockSupport;
-
 public class InterruptTest {
 
 

@@ -1,6 +1,4 @@
 package com.jimmie.java.基本测试.all.mutithread;
-import java.util.Objects;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by Jay on 3/22/17.

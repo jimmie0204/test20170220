@@ -1,6 +1,5 @@
 package com.jimmie.test.akka.statuschange;
 
-import com.jimmie.test.akka.hello.Greeter.Msg;
 import com.typesafe.config.ConfigFactory;
 
 import akka.actor.ActorRef;

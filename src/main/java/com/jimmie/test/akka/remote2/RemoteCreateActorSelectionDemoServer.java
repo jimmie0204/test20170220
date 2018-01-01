@@ -2,9 +2,7 @@ package com.jimmie.test.akka.remote2;
 
 import com.typesafe.config.ConfigFactory;
 
-import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
-import akka.actor.Props;  
+import akka.actor.ActorSystem;  
   
 public class RemoteCreateActorSelectionDemoServer {  
   

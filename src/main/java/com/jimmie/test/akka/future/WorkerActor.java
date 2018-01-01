@@ -1,6 +1,6 @@
 package com.jimmie.test.akka.future;
 
-import akka.actor.*;
+import akka.actor.UntypedActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
 

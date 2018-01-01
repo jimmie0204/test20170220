@@ -1,15 +1,16 @@
 package com.jimmie.test.akka.事务;
 
+import java.util.concurrent.TimeUnit;
+
+import com.typesafe.config.ConfigFactory;
+
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.pattern.Patterns;
 import akka.transactor.Coordinated;
 import akka.util.Timeout;
-import com.typesafe.config.ConfigFactory;
 import scala.concurrent.Await;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by liubenlong on 2017/1/16.

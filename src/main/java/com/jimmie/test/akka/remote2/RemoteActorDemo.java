@@ -1,23 +1,21 @@
 package com.jimmie.test.akka.remote2;
 
-import java.util.Arrays;  
-import java.util.concurrent.Callable;  
-  
-import scala.concurrent.Await;  
-import scala.concurrent.Future;  
-import scala.concurrent.duration.Duration;  
-import akka.actor.ActorRef;  
-import akka.actor.ActorSystem;  
-import akka.actor.Props;  
-import akka.dispatch.Futures;  
+import java.util.Arrays;
+import java.util.concurrent.Callable;
+
+import com.typesafe.config.ConfigFactory;
+
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.actor.Props;
+import akka.dispatch.Futures;
 import akka.dispatch.OnSuccess;
-import akka.japi.Creator;
-import akka.japi.Function;  
+import akka.japi.Function;
 import akka.pattern.Patterns;
-import akka.routing.FromConfig;
-import akka.util.Timeout;  
-  
-import com.typesafe.config.ConfigFactory;  
+import akka.util.Timeout;
+import scala.concurrent.Await;
+import scala.concurrent.Future;
+import scala.concurrent.duration.Duration;  
   
 public class RemoteActorDemo {  
   

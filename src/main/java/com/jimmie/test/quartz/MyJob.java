@@ -1,6 +1,6 @@
 package com.jimmie.test.quartz;
 import java.util.Date;
- 
+
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

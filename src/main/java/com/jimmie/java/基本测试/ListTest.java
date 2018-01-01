@@ -1,7 +1,6 @@
 package com.jimmie.java.基本测试;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

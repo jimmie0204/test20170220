@@ -1,7 +1,5 @@
 package com.jimmie.test.akka.scheduler;
 
-import java.util.concurrent.TimeUnit;
-
 import akka.actor.UntypedActor;
 
 /**

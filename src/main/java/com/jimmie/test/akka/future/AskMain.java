@@ -1,18 +1,17 @@
 package com.jimmie.test.akka.future;
 
+import java.util.concurrent.TimeUnit;
+
+import com.typesafe.config.ConfigFactory;
+
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.PoisonPill;
 import akka.actor.Props;
 import akka.pattern.Patterns;
-import com.typesafe.config.ConfigFactory;
-
-import scala.Function1;
 import scala.concurrent.Await;
 import scala.concurrent.Future;
 import scala.concurrent.duration.Duration;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by liubenlong on 2017/1/16.

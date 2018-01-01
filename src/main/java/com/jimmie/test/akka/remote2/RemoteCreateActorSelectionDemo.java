@@ -1,12 +1,11 @@
 package com.jimmie.test.akka.remote2;
 
-import akka.actor.ActorRef;  
-import akka.actor.ActorSelection;  
-import akka.actor.ActorSystem;  
-import akka.actor.Props;  
+import com.typesafe.config.ConfigFactory;
+
+import akka.actor.ActorRef;
+import akka.actor.ActorSystem;
+import akka.actor.Props;
 import akka.actor.UntypedActor;  
-  
-import com.typesafe.config.ConfigFactory;  
   
 public class RemoteCreateActorSelectionDemo {  
   

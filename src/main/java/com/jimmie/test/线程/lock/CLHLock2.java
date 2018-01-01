@@ -3,13 +3,9 @@ package com.jimmie.test.线程.lock;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-
-import com.jimmie.test.线程.lock.CLHLock.QNode;  
+import java.util.concurrent.locks.Lock;  
 
 /** 
 
