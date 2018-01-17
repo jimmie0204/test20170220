@@ -1,6 +1,8 @@
 package com.jimmie.test.谷歌guava;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -18,8 +20,12 @@ public class ImmutableTest {
 		newArrayList.add("b");
 		ImmutableList<String> copyOf = ImmutableList.copyOf(newArrayList);
 		
-		copyOf.add("c");
+//		copyOf.add("c");
 //		copyOf.clear();
+		newArrayList.clear();
+		newArrayList = null;
+		ImmutableList<String> copyOf2 = ImmutableList.copyOf(newArrayList);//不能为空
+		System.out.println(copyOf2.size());
 	}
 	
 	@Test
@@ -30,6 +36,13 @@ public class ImmutableTest {
 		ImmutableMap<String, Student> map = ImmutableMap.of("s1", s);
 		s.setAge(13);
 		System.out.println("=====success=========="+map.get("s1").getAge());
+		Map<String, List<Long>> map2 = ImmutableMap.of("s1", Lists.newArrayList());
+		sss(map);
+
+	}
+
+	private void sss(Map<String, Student> map){
+
 	}
 	
 }

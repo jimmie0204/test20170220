@@ -25,6 +25,10 @@ import org.junit.Test;
 第一种方式为绝对定位方式，即pathToConfigFile以"/"开头，此时Java以classpath为根目录，直接加上pathToConfigFile来搜索资源文件。
 第二种方式为相对定位方式，即pathToConfigFile不以"/"开头，此时默认是从此类所在的包下取资源,资源文件的全路径应该为：调用getResourceAsStream方法的类的package路径加上pathToConfigFile。（在将package转为目录时将"."变成"/"） 
 
+
+ getSystemResourceAsStream：
+ 路径直接使用相对于classpath的绝对路径,并且不能已 / 开头。
+
  * 
  * 
  * @author Administrator

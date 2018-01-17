@@ -3,6 +3,7 @@ package com.jimmie.test.事件驱动.event;
 import java.util.EventObject;
 import java.util.Vector;
 
+//包装了监听者的管理
 public class DemoSource {     
     private Vector<DemoListener> repository = new Vector<DemoListener>();//监听自己的监听器队列     
     public Vector<DemoListener> getRepository() {

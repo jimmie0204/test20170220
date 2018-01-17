@@ -23,7 +23,7 @@ public class ExecuteWeiTest {
 		   System.out.println(Integer.toBinaryString(SHUTDOWN));
 		   System.out.println(Integer.toBinaryString(STOP));
 		   System.out.println(Integer.toBinaryString(TIDYING));
-		   
+
 		   System.out.println(Integer.toBinaryString(CAPACITY));
 		   System.out.println(Integer.toBinaryString(~CAPACITY));
 		   System.out.println(runStateOf(3));
