@@ -20,9 +20,10 @@ import java.util.Random;
 /**
  *  自定义生成MyBatis的实体类、实体映射XML文件、Mapper.java
  *@author Jimmie
- *@version 1.0.0
+ *@version 1.0.3
+ *修改java实体中的bigdecimal为double
  */
-public class MakeIbator {
+public class MakeIbator3 {
  
     /**
      **********************************使用前必读*******************
@@ -252,7 +253,7 @@ public class MakeIbator {
         } else if ( type.indexOf(type_bit) > -1 ) {
             return "Boolean";
         } else if ( type.indexOf(type_decimal) > -1 ) {
-            return "java.math.BigDecimal";
+            return "Double";
         } else if ( type.indexOf(type_blob) > -1 ) {
             return "byte[]";
         }else if ( type.indexOf(type_float) > -1 ) {
@@ -918,7 +919,7 @@ public class MakeIbator {
  
     public static void main( String[] args ) {
         try {
-            new MakeIbator().generate();
+            new MakeIbator3().generate();
             System.out.println("===============success======================");
             // 自动打开生成文件的目录
             Runtime.getRuntime().exec("cmd /c start explorer D:\\");

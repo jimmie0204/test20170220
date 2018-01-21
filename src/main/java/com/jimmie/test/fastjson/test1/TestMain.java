@@ -110,7 +110,12 @@ public class TestMain {
 		Student s = new Student(100,"student");
 		grade.setStudent(s);
 		
-		System.out.println(JSONObject.toJSONString(grade));
+		String jsonString = JSONObject.toJSONString(grade);
+		
+		System.out.println(jsonString);
+		
+		Grade4 parseObject = JSONObject.parseObject(jsonString,Grade4.class);
+		System.out.println(parseObject.getGradeTime());
 	}
 	
 	//值引用问题（重复引用）
