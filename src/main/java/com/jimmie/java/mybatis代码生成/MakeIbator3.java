@@ -22,6 +22,8 @@ import java.util.Random;
  *@author Jimmie
  *@version 1.0.3
  *修改java实体中的bigdecimal为double
+ *去掉分页
+ *
  */
 public class MakeIbator3 {
  
@@ -79,7 +81,7 @@ public class MakeIbator3 {
  
     private final String bean_package = "com.eheart.oms.domain";
     
-    private final String mapper_package = "com.eheart.oms.dao";
+    private final String mapper_package = "com.eheart.oms.mapper";
  
  
     private final String driverName = "com.mysql.jdbc.Driver";
@@ -556,10 +558,6 @@ public class MakeIbator3 {
         bw.newLine();
         bw.newLine();
         
-        bw.write("\tpublic List<" + beanName + "> selectObjectListPage("+beanName+" "+processResultMapId2(beanName)+");");
-        bw.newLine();
-        bw.newLine();
-
         bw.write("\tpublic List<" + beanName + "> selectByObjectList("+beanName+" "+processResultMapId2(beanName)+");");
         bw.newLine();
         bw.newLine();
@@ -806,31 +804,6 @@ public class MakeIbator3 {
         bw.write("\t\t WHERE " + columns.get(0) + " = #{" + processField(columns.get(0)) + "}");
         bw.newLine();
         bw.write("\t</update>");
-        bw.newLine();
-        bw.newLine();
-        
-        //分页查询
-        bw.write("\t<!-- 分页查询 -->");
-        bw.newLine();
-        bw.write("\t<select id=\"selectObjectListPage\" resultMap=\"BaseResultMap"
-                + "\" parameterType=\"java.util.HashMap\" useCache=\"false\">");
-        bw.newLine();
-        bw.write("\t\t SELECT");
-        bw.newLine();
-        bw.write("\t\t <include refid=\"Base_Column_List\" />");
-        bw.newLine();
-        bw.write("\t\t FROM " + tableName);
-        bw.newLine();
-        bw.write("\t\t WHERE 1=1");
-        bw.newLine();
-        bw.write("\t\t <include refid=\"conditions\" />");
-//        bw.newLine();
-//        bw.write("\t\t <include refid=\"orderBy\" />");
-	    bw.newLine();
-	    bw.write("\t\t limit #{startOfPage},#{pageSize}");
-        
-        bw.newLine();
-        bw.write("\t</select>");
         bw.newLine();
         bw.newLine();
         
