@@ -13,6 +13,7 @@ public class TradeHandler2 implements EventHandler<Trade>, WorkHandler<Trade> {
     @Override  
     public void onEvent(Trade event) throws Exception {  
         //这里做具体的消费逻辑  
-        System.out.println(event.getPrice());  
+        System.out.println(event.getPrice());
+        Thread.sleep(3000);
     }  
 }  

@@ -3,6 +3,7 @@ package com.jimmie.test.队列disruptor.multi;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.lmax.disruptor.EventFactory;
 import com.lmax.disruptor.ExceptionHandler;
@@ -46,6 +47,7 @@ public class Main {
         workerPool.start(newFixedThreadPool);  
         
         final CountDownLatch latch = new CountDownLatch(1);
+		AtomicInteger num = new AtomicInteger(0);
         for (int i = 0; i < 10; i++) {  
         	final Producer p = new Producer(ringBuffer);
         	newFixedThreadPool.submit(new Runnable() {
@@ -57,7 +59,7 @@ public class Main {
 						e.printStackTrace();
 					}
 					for(int j = 0; j < 10; j ++){
-						p.onData(Integer.toString(j));
+						p.onData(num.getAndIncrement()+"");
 					}
 				}
 			});
@@ -73,7 +75,7 @@ public class Main {
 	
 	static class IntEventExceptionHandler implements ExceptionHandler<Order> {  
 	    public void handleEventException(Throwable ex, long sequence, Order event) {
-	    	System.out.println("baocullalalall===============");
+	    	System.out.println("baocullalalall==============="+event.getId()+"==="+sequence);
 	    }  
 	    public void handleOnStartException(Throwable ex) {}  
 	    public void handleOnShutdownException(Throwable ex) {}  
