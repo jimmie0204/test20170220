@@ -19,7 +19,7 @@ import com.lmax.disruptor.YieldingWaitStrategy;
 public class Main1 {  
    
 	public static void main(String[] args) throws Exception {  
-        int BUFFER_SIZE=1024;  
+        int BUFFER_SIZE=16;
         int THREAD_NUMBERS=4;  
         /* 
          * createSingleProducer创建一个单生产者的RingBuffer， 
@@ -50,14 +50,14 @@ public class Main1 {
         //把消息处理器提交到线程池  
         executors.submit(transProcessor);  
         
-/*        BatchEventProcessor<Trade> transProcessor2 = new BatchEventProcessor<Trade>(  
+        BatchEventProcessor<Trade> transProcessor2 = new BatchEventProcessor<Trade>(
                 ringBuffer, sequenceBarrier, new TradeHandler2());  
           
         //这一步的目的就是把消费者的位置信息引用注入到生产者    如果只有一个消费者的情况可以省略 
         ringBuffer.addGatingSequences(transProcessor2.getSequence());  
           
         //把消息处理器提交到线程池  
-        executors.submit(transProcessor2);  */
+        executors.submit(transProcessor2);
         
         //如果存在多个消费者 那重复执行上面3行代码 把TradeHandler换成其它消费者类  ，一个批量通知完了再通知下一个
           
@@ -75,8 +75,9 @@ public class Main1 {
         }); 
         
         future.get();//等待生产者结束  
-        Thread.sleep(1000);//等上1秒，等消费都处理完成  
-        transProcessor.halt();//通知事件(或者说消息)处理器 可以结束了（并不是马上结束!!!）  
+        Thread.sleep(10000);//等上1秒，等消费都处理完成
+        transProcessor.halt();//通知事件(或者说消息)处理器 可以结束了（并不是马上结束!!!）
+        transProcessor2.halt();
         executors.shutdown();//终止线程  
         System.out.println("executors已结束");
     }  
