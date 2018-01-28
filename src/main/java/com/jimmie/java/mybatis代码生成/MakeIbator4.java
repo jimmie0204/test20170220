@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,12 +21,13 @@ import java.util.Random;
 /**
  *  自定义生成MyBatis的实体类、实体映射XML文件、Mapper.java
  *@author Jimmie
- *@version 1.0.3
+ *@version 1.0.4
  *修改java实体中的bigdecimal为double
  *去掉分页
+ *生成swagger实体注释
  *
  */
-public class MakeIbator3 {
+public class MakeIbator4 {
  
     /**
      **********************************使用前必读*******************
@@ -39,6 +41,9 @@ public class MakeIbator3 {
      **
      ***********************************************************
      */
+	
+	//不生成@ApiModelProperty的变量
+	private final List<String> listIgnore = Arrays.asList("id","createUser","updateUser","createTime","updateTime","yn");
  
     private final String type_char = "char";
  
@@ -356,6 +361,11 @@ public class MakeIbator3 {
         bw.newLine();
         bw.write("import java.io.Serializable;");
         bw.newLine();
+        bw.write("import io.swagger.annotations.ApiModel;");
+        bw.newLine();
+        bw.write("import io.swagger.annotations.ApiModelProperty;");
+
+        bw.newLine();
         //bw.write("import lombok.Data;");
         //      bw.write("import javax.persistence.Entity;");
         bw = buildClassComment(bw, tableComment);
@@ -369,6 +379,8 @@ public class MakeIbator3 {
         //      bw.write("@Entity");
         //bw.write("@Data");
         //bw.newLine();
+        bw.write("@ApiModel(\""+tableComment+"\")");
+        bw.newLine();
         bw.write("public class " + beanName + " implements Serializable {");
         bw.newLine();
         bw.newLine();
@@ -381,7 +393,16 @@ public class MakeIbator3 {
         for ( int i = 0 ; i < size ; i++ ) {
             bw.write("\t/**" + comments.get(i) + "**/");
             bw.newLine();
-            bw.write("\tprivate " + processType(types.get(i)) + " " + processField(columns.get(i)) + ";");
+            
+            String fieldName = processField(columns.get(i));
+            if(listIgnore.contains(fieldName)){
+            	 bw.write("\t@ApiModelProperty(hidden = true)");
+            }else{
+            	 bw.write("\t@ApiModelProperty(\""+comments.get(i) +"\")");
+            }
+            
+            bw.newLine();
+            bw.write("\tprivate " + processType(types.get(i)) + " " +fieldName + ";");
             bw.newLine();
             bw.newLine();
         }
@@ -883,8 +904,8 @@ public class MakeIbator3 {
             //          this.outputBaseBean();
             String tableComment = tableComments.get(tableName);
             buildEntityBean(columns, types, comments, tableComment);
-            buildMapperXml(columns, types, comments);
-            buildMapper(types);
+//            buildMapperXml(columns, types, comments);
+//            buildMapper(types);
         }
         conn.close();
     }
@@ -892,7 +913,7 @@ public class MakeIbator3 {
  
     public static void main( String[] args ) {
         try {
-            new MakeIbator3().generate();
+            new MakeIbator4().generate();
             System.out.println("===============success======================");
             // 自动打开生成文件的目录
             Runtime.getRuntime().exec("cmd /c start explorer D:\\");
