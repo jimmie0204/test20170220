@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,9 +21,13 @@ import java.util.Random;
 /**
  *  自定义生成MyBatis的实体类、实体映射XML文件、Mapper.java
  *@author Jimmie
- *@version 1.0.0
+ *@version 1.0.4
+ *修改java实体中的bigdecimal为double
+ *去掉分页
+ *生成swagger实体注释
+ *
  */
-public class MakeIbator {
+public class MakeIbator4 {
  
     /**
      **********************************使用前必读*******************
@@ -36,6 +41,9 @@ public class MakeIbator {
      **
      ***********************************************************
      */
+	
+	//不生成@ApiModelProperty的变量
+	private final List<String> listIgnore = Arrays.asList("id","createUser","updateUser","createTime","updateTime","yn");
  
     private final String type_char = "char";
  
@@ -78,7 +86,7 @@ public class MakeIbator {
  
     private final String bean_package = "com.eheart.oms.domain";
     
-    private final String mapper_package = "com.eheart.oms.dao";
+    private final String mapper_package = "com.eheart.oms.mapper";
  
  
     private final String driverName = "com.mysql.jdbc.Driver";
@@ -118,19 +126,19 @@ public class MakeIbator {
         List<String> tables = new ArrayList<String>();
         PreparedStatement pstate = conn.prepareStatement("show tables");
         ResultSet results = pstate.executeQuery();
-       /* while ( results.next() ) {
+       while ( results.next() ) {
             String tableName = results.getString(1);
             //          if ( tableName.toLowerCase().startsWith("yy_") ) {
             tables.add(tableName);
             //          }
-        }*/
-        tables.add("oms_order");
+        }
+       /*  tables.add("oms_order");
         tables.add("oms_order_extra");
         tables.add("oms_order_food_detail");
         tables.add("oms_order_pay_detail");
         tables.add("oms_reverse_order");
         tables.add("oms_reverse_order_food_detail");
-        tables.add("oms_reverse_order_pay_detail");
+        tables.add("oms_reverse_order_pay_detail");*/
 //        tables.add("message_retry");
 //        tables.add("vsa_return_out");
 //        tables.add("vsa_price_compare");
@@ -252,7 +260,7 @@ public class MakeIbator {
         } else if ( type.indexOf(type_bit) > -1 ) {
             return "Boolean";
         } else if ( type.indexOf(type_decimal) > -1 ) {
-            return "java.math.BigDecimal";
+            return "Double";
         } else if ( type.indexOf(type_blob) > -1 ) {
             return "byte[]";
         }else if ( type.indexOf(type_float) > -1 ) {
@@ -353,6 +361,11 @@ public class MakeIbator {
         bw.newLine();
         bw.write("import java.io.Serializable;");
         bw.newLine();
+        bw.write("import io.swagger.annotations.ApiModel;");
+        bw.newLine();
+        bw.write("import io.swagger.annotations.ApiModelProperty;");
+
+        bw.newLine();
         //bw.write("import lombok.Data;");
         //      bw.write("import javax.persistence.Entity;");
         bw = buildClassComment(bw, tableComment);
@@ -366,6 +379,8 @@ public class MakeIbator {
         //      bw.write("@Entity");
         //bw.write("@Data");
         //bw.newLine();
+        bw.write("@ApiModel(\""+tableComment+"\")");
+        bw.newLine();
         bw.write("public class " + beanName + " implements Serializable {");
         bw.newLine();
         bw.newLine();
@@ -378,7 +393,16 @@ public class MakeIbator {
         for ( int i = 0 ; i < size ; i++ ) {
             bw.write("\t/**" + comments.get(i) + "**/");
             bw.newLine();
-            bw.write("\tprivate " + processType(types.get(i)) + " " + processField(columns.get(i)) + ";");
+            
+            String fieldName = processField(columns.get(i));
+            if(listIgnore.contains(fieldName)){
+            	 bw.write("\t@ApiModelProperty(hidden = true)");
+            }else{
+            	 bw.write("\t@ApiModelProperty(\""+comments.get(i) +"\")");
+            }
+            
+            bw.newLine();
+            bw.write("\tprivate " + processType(types.get(i)) + " " +fieldName + ";");
             bw.newLine();
             bw.newLine();
         }
@@ -555,10 +579,6 @@ public class MakeIbator {
         bw.newLine();
         bw.newLine();
         
-        bw.write("\tpublic List<" + beanName + "> selectObjectListPage("+beanName+" "+processResultMapId2(beanName)+");");
-        bw.newLine();
-        bw.newLine();
-
         bw.write("\tpublic List<" + beanName + "> selectByObjectList("+beanName+" "+processResultMapId2(beanName)+");");
         bw.newLine();
         bw.newLine();
@@ -808,31 +828,6 @@ public class MakeIbator {
         bw.newLine();
         bw.newLine();
         
-        //分页查询
-        bw.write("\t<!-- 分页查询 -->");
-        bw.newLine();
-        bw.write("\t<select id=\"selectObjectListPage\" resultMap=\"BaseResultMap"
-                + "\" parameterType=\"java.util.HashMap\" useCache=\"false\">");
-        bw.newLine();
-        bw.write("\t\t SELECT");
-        bw.newLine();
-        bw.write("\t\t <include refid=\"Base_Column_List\" />");
-        bw.newLine();
-        bw.write("\t\t FROM " + tableName);
-        bw.newLine();
-        bw.write("\t\t WHERE 1=1");
-        bw.newLine();
-        bw.write("\t\t <include refid=\"conditions\" />");
-//        bw.newLine();
-//        bw.write("\t\t <include refid=\"orderBy\" />");
-	    bw.newLine();
-	    bw.write("\t\t limit #{startOfPage},#{pageSize}");
-        
-        bw.newLine();
-        bw.write("\t</select>");
-        bw.newLine();
-        bw.newLine();
-        
       //按条件查询列表
         bw.write("\t<!-- 按条件查询列表 -->");
         bw.newLine();
@@ -909,8 +904,8 @@ public class MakeIbator {
             //          this.outputBaseBean();
             String tableComment = tableComments.get(tableName);
             buildEntityBean(columns, types, comments, tableComment);
-            buildMapperXml(columns, types, comments);
-            buildMapper(types);
+//            buildMapperXml(columns, types, comments);
+//            buildMapper(types);
         }
         conn.close();
     }
@@ -918,7 +913,7 @@ public class MakeIbator {
  
     public static void main( String[] args ) {
         try {
-            new MakeIbator().generate();
+            new MakeIbator4().generate();
             System.out.println("===============success======================");
             // 自动打开生成文件的目录
             Runtime.getRuntime().exec("cmd /c start explorer D:\\");
