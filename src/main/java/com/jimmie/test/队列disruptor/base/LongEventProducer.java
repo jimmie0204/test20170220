@@ -40,6 +40,7 @@ public class LongEventProducer {
 			//4.发布事件
 			//注意，最后的 ringBuffer.publish 方法必须包含在 finally 中以确保必须得到调用；如果某个请求的 sequence 未被提交，将会堵塞后续的发布操作或者其它的 producer。
 			ringBuffer.publish(sequence);
+			System.out.println("push le 一个事件"+bb.getLong(0));
 		}
 	}
 	

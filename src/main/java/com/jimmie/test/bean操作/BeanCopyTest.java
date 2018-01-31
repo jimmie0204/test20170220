@@ -30,4 +30,15 @@ public class BeanCopyTest {
 		System.out.println(s2.getAge());
 		System.out.println(s2.getName());
 	}
+
+	//同属性不同类型不复制
+	@Test
+	public void test3(){
+
+		Student s1 = new Student(12, null);
+		Hotel s2 = new Hotel(15,12);
+		beancopy(s1,s2);
+		System.out.println(s2.getAge());
+		System.out.println(s2.getName());
+	}
 }
