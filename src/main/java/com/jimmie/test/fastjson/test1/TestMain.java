@@ -1,16 +1,17 @@
 package com.jimmie.test.fastjson.test1;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.google.common.collect.Maps;
+import org.junit.Test;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
-import org.junit.Test;
-
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.google.common.collect.Maps;
 
 public class TestMain {
 
@@ -154,6 +155,138 @@ public class TestMain {
 		System.out.println(JSONObject.toJSONString(tt));
 		
 	}
-	
-	
+
+	//null 格式化
+	@Test
+	public void test9(){
+		Grade4 gt = new Grade4();
+		gt.setCount(1);
+		gt.setName("sdsd");
+		gt.setGradeTime(null);
+		gt.setStudent(null);
+
+		System.out.println(JSONObject.toJSONString(gt));
+	}
+
+
+	//数组和对象,简单类型判定
+	@Test
+	public void test10(){
+		Grade3 gt = new Grade3();
+		gt.setCount(1);
+		gt.setName("sdsd");
+		Student s1 = new Student(1,"a");
+		Student s2 = new Student(1,"b");
+		List<Student> list = new ArrayList<Student>();
+		list.add(s1);list.add(s2);
+		gt.setSlist(list);
+
+		Student2 k2 = new Student2(1,"b");
+		gt.setStudent2(k2);
+
+		String s = JSONObject.toJSONString(gt);
+		System.out.println(s);
+
+		JSONObject jsonObject = JSON.parseObject(s);
+		System.out.println(jsonObject);
+
+		Object slist = jsonObject.get("slist");
+		Object student2 = jsonObject.get("student2");
+		Object name_grade = jsonObject.get("name_grade");
+
+		System.out.println(slist.getClass().getTypeName());
+		System.out.println(student2.getClass().getTypeName());
+		System.out.println(name_grade.getClass().getTypeName());
+
+		if(slist instanceof JSONObject){
+			System.out.println("slist JSONObject ");
+		}else if(slist instanceof JSONArray){
+			System.out.println("slist JSONArray ");
+		}
+
+		List<Student> t1 = JSON.parseArray(((JSONArray)slist).toJSONString(),Student.class);
+		System.out.println(t1.getClass().getTypeName());
+
+		if(student2 instanceof JSONObject){
+
+			System.out.println("student2 JSONObject ");
+		}else if(slist instanceof JSONArray){
+			System.out.println("student2 JSONArray ");
+		}
+
+		Student2 t2 = JSON.parseObject(((JSONObject)student2).toJSONString(),Student2.class);
+		System.out.println(t2.getClass().getTypeName());
+		System.out.println(Student2.class.getGenericSuperclass());
+
+
+		Object t3;
+		if(name_grade instanceof JSONObject){
+
+			System.out.println("name_grade JSONObject ");
+		}else if(name_grade instanceof JSONArray){
+			System.out.println("name_grade JSONArray ");
+		}else{
+			System.out.println("name_grade nothing");
+		}
+		t3 = (String)name_grade;
+
+	}
+
+
+	//TypeReference
+
+	/**
+	 * new TypeReference<Student2>(){}匿名内部类，
+	 * 所以Type superClass = getClass().getGenericSuperclass();获取的就是TypeReference本身
+	 */
+
+	@Test
+	public void test11(){
+
+		System.out.println(new TypeReference<Student2>(){}.getType());//匿名内部类
+		System.out.println(new TypeReference<Student2>(){}.getClass());
+		System.out.println(new TypeReference<List<Student2>>(){}.getType());
+		System.out.println(new TypeReference<List<Student2>>(){}.getClass());
+
+
+	}
+
+	@Test
+	public void test12(){
+
+		System.out.println(GenericsUtils.getSuperClassGenricType(Student2.class, 0));
+		System.out.println(GenericsUtils.getSuperClassGenricType(Student2.class, 0));
+		System.out.println(new TypeReference<List<Student2>>().getType().getTypeName());
+	}
+
+	@Test
+	public void test13(){
+		Grade3 gt = new Grade3();
+		gt.setCount(1);
+		gt.setName("sdsd");
+		Student s1 = new Student(1,"a");
+		Student s2 = new Student(1,"b");
+		List<Student> list = new ArrayList<Student>();
+		list.add(s1);list.add(s2);
+		gt.setSlist(list);
+
+		Student2 k2 = new Student2(1,"b");
+		gt.setStudent2(k2);
+
+		String s = JSONObject.toJSONString(gt);
+		System.out.println(s);
+
+		JSONObject jsonObject = JSON.parseObject(s);
+
+		Object slist = jsonObject.get("slist");
+
+		Type type = new TypeReference<List<Student>>() {
+		}.getType();
+
+		Object t = JSONArray.parseObject(((JSONArray)slist).toJSONString(),type);
+
+		System.out.println("success============");
+	}
+
+
 }

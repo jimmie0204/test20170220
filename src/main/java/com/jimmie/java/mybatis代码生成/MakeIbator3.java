@@ -69,7 +69,7 @@ public class MakeIbator3 {
     private final String type_enum = "enum";
     
  
-    private final String dbName = "newe_oms"; // 数据库名
+    private final String dbName = "platformdb"; // 数据库名
     
     private final String moduleName = ""; // 模块名
  
@@ -79,9 +79,9 @@ public class MakeIbator3 {
  
     private final String xml_path = "d:/entity_mapper/"+dbName;
  
-    private final String bean_package = "com.eheart.oms.domain";
+    private final String bean_package = "com.unis.order.baseinfo.entity";
     
-    private final String mapper_package = "com.eheart.oms.mapper";
+    private final String mapper_package = "com.unis.order.baseinfo.mapper";
  
  
     private final String driverName = "com.mysql.jdbc.Driver";
@@ -121,19 +121,14 @@ public class MakeIbator3 {
         List<String> tables = new ArrayList<String>();
         PreparedStatement pstate = conn.prepareStatement("show tables");
         ResultSet results = pstate.executeQuery();
-       while ( results.next() ) {
+/*       while ( results.next() ) {
             String tableName = results.getString(1);
             //          if ( tableName.toLowerCase().startsWith("yy_") ) {
             tables.add(tableName);
             //          }
-        }
-       /*  tables.add("oms_order");
-        tables.add("oms_order_extra");
-        tables.add("oms_order_food_detail");
-        tables.add("oms_order_pay_detail");
-        tables.add("oms_reverse_order");
-        tables.add("oms_reverse_order_food_detail");
-        tables.add("oms_reverse_order_pay_detail");*/
+        }*/
+       tables.add("aplat_pay_mode");
+        tables.add("astore_pay_mode");
 //        tables.add("message_retry");
 //        tables.add("vsa_return_out");
 //        tables.add("vsa_price_compare");
