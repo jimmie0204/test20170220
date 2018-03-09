@@ -1,5 +1,10 @@
 package com.jimmie.java.基本测试.反射.test1;
 
+
+import com.google.common.reflect.Reflection;
+import org.junit.Test;
+import org.springframework.util.ReflectionUtils;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -61,6 +66,17 @@ public class TestC {
 			
 			System.out.println("</" + clazz.getName() + ">");
 		}
+	}
+
+	@Test
+	public void test1(){
+
+		Student s = new Student(true,"jimmie",12);
+
+		Object name = ReflectUtil.getFieldValue(s, "name");
+		System.out.println(name);
+
+
 	}
 
 }

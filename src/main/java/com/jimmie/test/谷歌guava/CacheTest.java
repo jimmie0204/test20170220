@@ -1,11 +1,7 @@
 package com.jimmie.test.谷歌guava;
 
 import java.io.IOException;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 import org.junit.Test;
 
@@ -29,6 +25,7 @@ public class CacheTest {
 			@Override
 			public String load(String key) throws Exception {
 				// TODO Auto-generated method stub
+				System.out.println("未找到==回源查询");
 				return "hello "+key+";";
 			}
 			
@@ -231,7 +228,47 @@ public class CacheTest {
 		System.in.read();
 		
 		
-	} 
+	}
+
+	@Test
+	public void test7(){
+
+		LoadingCache<String,Object> cache = CacheBuilder.newBuilder().build(
+				new CacheLoader<String, Object>() {
+					@Override
+					public Object load(String key) throws Exception {
+						System.out.println("未找到==回源查询");
+						return "hello "+key+";";
+					}
+				});
+
+		ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+		CountDownLatch swtich = new CountDownLatch(1);
+
+		for(int i=0;i<2;i++) {
+			executorService.execute(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						swtich.await();
+						Object jimmie = cache.get("jimmie");
+						System.out.println(jimmie);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+
+		swtich.countDown();;
+		try {
+			System.in.read();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	
 	
 }

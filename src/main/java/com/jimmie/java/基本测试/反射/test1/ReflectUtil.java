@@ -2,7 +2,7 @@ package com.jimmie.java.基本测试.反射.test1;
 
 import java.lang.reflect.Field;
 
-public class ReflectTest {
+public class ReflectUtil {
 
 	
 	
@@ -20,7 +20,9 @@ public class ReflectTest {
           
         for(; clazz != Object.class ; clazz = clazz.getSuperclass()) {  
             try {  
-                field = clazz.getDeclaredField(fieldName) ;  
+                field = clazz.getDeclaredField(fieldName) ;
+                if(field!=null)
+                    System.out.println(field.getType());
                 return field ;  
             } catch (Exception e) {  
                 //这里甚么都不要做！并且这里的异常必须这样写，不能抛出去。  
