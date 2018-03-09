@@ -21,6 +21,17 @@ public class Grade3 implements Serializable{
 	@JSONField
 	private List<Student> slist;
 
+	@JSONField
+	private Student2 student2;
+
+	public Student2 getStudent2() {
+		return student2;
+	}
+
+	public void setStudent2(Student2 student2) {
+		this.student2 = student2;
+	}
+
 	public String getName() {
 		return name;
 	}

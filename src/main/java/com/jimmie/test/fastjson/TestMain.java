@@ -23,6 +23,9 @@ public class TestMain {
 		System.out.println(jsonArrayText);;
 		List<Student> list2 = JSONArray.parseArray(jsonArrayText,Student.class);
 		System.out.println(list2.get(0).getName());
+		Object parse = JSON.parse(jsonArrayText);
+		System.out.println(parse);
+
 	}
 	
 	@Test
