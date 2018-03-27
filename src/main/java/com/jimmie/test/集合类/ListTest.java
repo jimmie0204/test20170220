@@ -30,6 +30,12 @@ public class ListTest {
 		 for(Person temp:list){
 			 System.out.println(temp.toString());;
 		 }
+		List<Person> list2 = null;
+
+		for(Person temp:list2){//空指针异常
+			System.out.println(temp);
+		}
+
 	}
 	
 	@Test
