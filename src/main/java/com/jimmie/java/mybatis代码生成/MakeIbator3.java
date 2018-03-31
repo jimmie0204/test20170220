@@ -557,6 +557,10 @@ public class MakeIbator3 {
         bw.newLine();
         bw.newLine();
         
+        bw.write("\tpublic " + beanName + " selectOneByObject("+beanName+" "+processResultMapId2(beanName)+");");
+        bw.newLine();
+        bw.newLine();
+        
         bw.write("}");
         bw.newLine();
         bw.flush();
@@ -822,6 +826,25 @@ public class MakeIbator3 {
         bw.newLine();
         bw.newLine();
         
+        //按条件查询列表
+        bw.write("\t<!-- 按条件查询一个对象 -->");
+        bw.newLine();
+        bw.write("\t<select id=\"selectOneByObject\" resultMap=\"BaseResultMap"
+                + "\" parameterType=\"java.util.HashMap\">");
+        bw.newLine();
+        bw.write("\t\t SELECT");
+        bw.newLine();
+        bw.write("\t\t <include refid=\"Base_Column_List\" />");
+        bw.newLine();
+        bw.write("\t\t FROM " + tableName);
+        bw.newLine();
+        bw.write("\t\t WHERE 1=1");
+        bw.newLine();
+        bw.write("\t\t <include refid=\"conditions\" />");
+        bw.newLine();
+        bw.write("\t</select>");
+        bw.newLine();
+        bw.newLine();
     }
  
  
