@@ -17,7 +17,7 @@ public class CC {
           }
 
           private void say(String name,int age) {
-              System.out.println(name+"de age is "+age);
+              System.out.println(name+" de age is "+age);
               super.eat(name);
           }
       };

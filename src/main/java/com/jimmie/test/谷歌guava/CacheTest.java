@@ -1,11 +1,7 @@
 package com.jimmie.test.谷歌guava;
 
 import java.io.IOException;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 import org.junit.Test;
 
@@ -22,6 +18,8 @@ import com.google.common.util.concurrent.ListenableFutureTask;
 
 public class CacheTest {
 
+	ExecutorService executorService = Executors.newFixedThreadPool(10);
+
 	@Test
 	public void test() throws ExecutionException{
 		LoadingCache<String, String> cache = CacheBuilder.newBuilder().build(new CacheLoader<String, String>(){
@@ -29,6 +27,7 @@ public class CacheTest {
 			@Override
 			public String load(String key) throws Exception {
 				// TODO Auto-generated method stub
+				System.out.println("未找到==回源查询");
 				return "hello "+key+";";
 			}
 			
@@ -43,26 +42,40 @@ public class CacheTest {
 	
 	@Test
 	public void test2() throws ExecutionException{
-		Cache<String, String> cache = CacheBuilder.newBuilder().build(); 
+		LoadingCache<String, String> cache = CacheBuilder.newBuilder().build(new CacheLoader<String, String>(){
+
+			@Override
+			public String load(String key) throws Exception {
+				System.out.println("未找到==回源查询");
+				return "hello "+key+";";
+			}
+
+		});
 		cache.put("jimmie", "sdsdsd");
+		//有的话返回值
 		System.out.println(cache.get("jimmie", new Callable<String>() {
 
 			@Override
 			public String call() throws Exception {
-				
+				System.out.println("caller加载");
 				return "mmmm u";
 			}
 		}));;
 		
-		
+		//没有的话使用caller取值放回缓存，覆盖默认CacheLoader
 		System.out.println(cache.get("mryx", new Callable<String>() {
 
 			@Override
 			public String call() throws Exception {
-				
+				System.out.println("caller加载");
 				return "llll u";
 			}
-		}));;
+		}));
+
+		//没有值，使用默认覆盖默认CacheLoader加载
+		System.out.println(cache.get("mryx2"));
+
+
 		
 	}
 	
@@ -187,11 +200,12 @@ public class CacheTest {
 
 			@Override
 			public Object load(String key) throws Exception {
+				System.out.println(Thread.currentThread().hashCode());
 				return "hello " + key + ";";
 			}
 			
 		
-			@Override
+			/*@Override
 			public ListenableFuture<Object> reload(String key, Object oldValue){
 				System.out.println("调用reload=====");
 				 if (neverNeedsRefresh(key)) {
@@ -202,16 +216,16 @@ public class CacheTest {
 				     ListenableFutureTask<Object> task=ListenableFutureTask.create(new Callable<Object>() {
 				         public Object call() {
 				        	 System.out.println(key+"正在被重新加载");
-				             return key+"=oldValue:"+oldValue+"=reload";
+				             return "reload的新值：=="+key+"=oldValue；"+oldValue+"=reload";
 				         }
 
 				     });
-				     new Thread(task).start();
-//				     Executors.newCachedThreadPool().execute(task);
+
+					 executorService.submit(task);
 				     return task;
 
 				 }			
-			}
+			}*/
 
 
 			private boolean neverNeedsRefresh(String key) {
@@ -220,7 +234,7 @@ public class CacheTest {
 		});
 		
 //		cache.put("jimmie", "sdsdsd");
-//		long begintime = System.currentTimeMillis();
+//		long begintime = System.curren、tTimeMillis();
 		System.out.println(cache.get("jimmie"));
 //		System.out.println((System.currentTimeMillis()-begintime)/1000);
 		TimeUnit.SECONDS.sleep(5);
@@ -231,7 +245,47 @@ public class CacheTest {
 		System.in.read();
 		
 		
-	} 
+	}
+
+	@Test
+	public void test7(){
+
+		LoadingCache<String,Object> cache = CacheBuilder.newBuilder().build(
+				new CacheLoader<String, Object>() {
+					@Override
+					public Object load(String key) throws Exception {
+						System.out.println("未找到==回源查询");
+						return "hello "+key+";";
+					}
+				});
+
+
+
+		CountDownLatch swtich = new CountDownLatch(1);
+
+		for(int i=0;i<2;i++) {
+			executorService.execute(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						swtich.await();
+						Object jimmie = cache.get("jimmie");
+						System.out.println(jimmie);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+
+		swtich.countDown();;
+		try {
+			System.in.read();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	
 	
 }
