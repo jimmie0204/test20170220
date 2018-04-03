@@ -41,4 +41,14 @@ public class BaseTest {
        Integer i = 100;
        System.out.println(i/11);
     }
+
+    public void f1(int num){
+        System.out.println("num=="+num);
+
+    }
+
+    @Test
+    public void test4(){
+        new BaseTest().f1(0);
+    }
 }
