@@ -87,12 +87,20 @@ public class WeiTest {
 	
 	@Test
 	public void test7(){
-		int n=13;
+		int n=1;
 		System.out.println( Integer.toBinaryString(n));//原码
 		System.out.println( Integer.toBinaryString(~n));//反码
 		System.out.println( Integer.toBinaryString(-n));//补码
 
 		System.out.println(-n&n );
+		System.out.println("=============");
+
+		int m=-1;
+		System.out.println( Integer.toBinaryString(m));//原码
+		System.out.println( Integer.toBinaryString(~m));//反码
+		System.out.println( Integer.toBinaryString(-m));//补码
+
+		System.out.println(-m&m );
 	}
 	
 	@Test

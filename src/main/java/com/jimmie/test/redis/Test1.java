@@ -1,8 +1,8 @@
 package com.jimmie.test.redis;
 
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
+import org.junit.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
@@ -11,7 +11,7 @@ public class Test1 {
 	public static Jedis jedis = null;
 
 	static {
-		JedisPool ll = new JedisPool("192.168.248.55");
+		JedisPool ll = new JedisPool("127.0.0.1");
 		jedis = ll.getResource();
 	}
 
@@ -84,4 +84,52 @@ public class Test1 {
 		close();
 	}
 
+	@Test
+	public void test1(){
+		Long hset = jedis.hset("nevermore", "m", "120");
+		System.out.println(hset);
+		String hget = jedis.hget("nevermore", "r");
+		System.out.println(hget);
+
+		Map<String,String> map = new HashMap<>();
+		map.put("ma","a");
+		map.put("mc","c");
+		String mt = jedis.hmset("mt", map);
+		System.out.println(mt);
+		List<String> hmget = jedis.hmget("mt", "ma", "mb");
+		System.out.println(hmget);
+		close();
+
+
+	}
+
+	@Test
+	public void test2(){
+		String lion = jedis.set("lion", "120");
+		System.out.println(lion);
+		Long hset = jedis.hset("lion", "m", "120");
+		System.out.println(hset);
+		close();
+
+	}
+
+	@Test
+	public void test3(){
+		Long hset = jedis.hset("doom", "m", "120");
+		Long e1 = jedis.expire("doom", 60);
+		Long ttl1 = jedis.pttl("doom");
+		System.out.println("第一次设置ttl之后剩余的生存时间为："+ttl1);
+
+		Map<String,String> map = new HashMap<>();
+		map.put("z","a");
+		map.put("r","c");
+		String mt = jedis.hmset("doom", map);
+
+		Long e2 = jedis.expire("doom", 600);
+		Long ttl2 = jedis.pttl("doom");
+		System.out.println("第二次设置ttl之后剩余的生存时间为："+ttl2);
+		close();
+
+
+	}
 }
