@@ -69,7 +69,7 @@ public class MakeIbator3 {
     private final String type_enum = "enum";
     
  
-    private final String dbName = "newe-portal"; // 数据库名
+    private final String dbName = "platformdb"; // 数据库名
     
     private final String moduleName = ""; // 模块名
  
@@ -79,9 +79,9 @@ public class MakeIbator3 {
  
     private final String xml_path = "d:/entity_mapper/"+dbName;
  
-    private final String bean_package = "com.newe.portal.domain";
+    private final String bean_package = "com.unis.order.newejimmie.entity";
     
-    private final String mapper_package = "com.newe.portal.mapper";
+    private final String mapper_package = "com.unis.order.newejimmie.mapper";
  
  
     private final String driverName = "com.mysql.jdbc.Driver";
@@ -121,17 +121,16 @@ public class MakeIbator3 {
         List<String> tables = new ArrayList<String>();
         PreparedStatement pstate = conn.prepareStatement("show tables");
         ResultSet results = pstate.executeQuery();
-       while ( results.next() ) {
+/*       while ( results.next() ) {
             String tableName = results.getString(1);
             //          if ( tableName.toLowerCase().startsWith("yy_") ) {
             tables.add(tableName);
             //          }
-        }
-//       tables.add("t_company_info");
-//        tables.add("astore_pay_mode");
-//        tables.add("message_retry");
-//        tables.add("vsa_return_out");
-//        tables.add("vsa_price_compare");
+        }*/
+        tables.add("newe_cpdyj");
+        tables.add("newe_gzzdyj");
+        tables.add("newe_tc_bxc");
+        tables.add("newe_tc_kxc");
         return tables;
     }
  
