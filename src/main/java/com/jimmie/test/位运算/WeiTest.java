@@ -101,6 +101,7 @@ public class WeiTest {
 		System.out.println( Integer.toBinaryString(-m));//补码
 
 		System.out.println(-m&m );
+
 	}
 	
 	@Test
@@ -135,6 +136,14 @@ public class WeiTest {
 	        printInfo(number);
 	        byte a = 'A';
 	        System.out.println(a-1);
+	}
+
+	@Test
+	public void test10(){
+		int h;
+		int i = (h = "sdfsd".hashCode()) ^ (h >>> 16);
+		System.out.println(Integer.toBinaryString(i));
+
 	}
 	
 	

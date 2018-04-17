@@ -17,4 +17,13 @@ public class CollectionTest {
 			System.out.println("empty");
 		}
 	}
+
+	@Test
+	public void test2(){
+		final List<Long> poiIds = Lists.asList(100101L,null);
+		final List<Integer> attrIds = Lists.asList(111,222,null);
+
+		System.out.println(poiIds);
+		System.out.println(attrIds);
+	}
 }
