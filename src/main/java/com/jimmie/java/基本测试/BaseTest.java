@@ -51,4 +51,9 @@ public class BaseTest {
     public void test4(){
         new BaseTest().f1(0);
     }
+
+    @Test
+    public void test5(){
+        System.out.println(52903566%512);
+    }
 }

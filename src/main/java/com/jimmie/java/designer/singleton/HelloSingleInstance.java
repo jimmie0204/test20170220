@@ -1,4 +1,4 @@
-package com.jimmie.java.基本测试.all.designPattern.singleton;
+package com.jimmie.java.designer.singleton;
 
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;

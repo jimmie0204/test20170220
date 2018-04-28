@@ -1,4 +1,4 @@
-package com.jimmie.java.基本测试.all.designPattern;
+package com.jimmie.java.designer.builder;
 
 /**
  * Created by Jay on 3/24/17.

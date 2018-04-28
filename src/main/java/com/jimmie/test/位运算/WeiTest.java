@@ -2,6 +2,9 @@ package com.jimmie.test.位运算;
 
 import org.junit.Test;
 
+/**
+ * 计算机存储的是补码
+ */
 public class WeiTest {
 
 	@Test
@@ -143,9 +146,34 @@ public class WeiTest {
 		int h;
 		int i = (h = "sdfsd".hashCode()) ^ (h >>> 16);
 		System.out.println(Integer.toBinaryString(i));
+		System.out.println(1 << 31);
+		System.out.println(Integer.toBinaryString(1 << 31));
 
 	}
-	
+
+	@Test
+	public void test11(){
+		int n=-1;
+		System.out.println( Integer.toBinaryString(n));//补码
+		System.out.println( Integer.toBinaryString(n-1));//反码
+		System.out.println( Integer.toBinaryString(-n));//补码
+		System.out.println( Integer.toBinaryString(~n+1));//补码
+
+		System.out.println(~(~n+1) +1);
+	}
+
+	@Test
+	public void test12(){
+		int n=1;
+		System.out.println( Integer.toBinaryString(n));//补码
+		System.out.println( Integer.toBinaryString(n-1));//反码
+		System.out.println( Integer.toBinaryString(-n));//补码
+		System.out.println( Integer.toBinaryString(~n+1));//补码
+
+		System.out.println(~(~n+1) +1);
+	}
+
+
 	
 }
 	
