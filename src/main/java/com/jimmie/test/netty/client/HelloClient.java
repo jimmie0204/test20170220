@@ -33,14 +33,30 @@ public class HelloClient {
 			channel = f.channel();
 			// Wait until the connection is closed.
 			channel.closeFuture().sync();
+			System.out.println("over.....");
 		} finally {
 			workerGroup.shutdownGracefully();
 		}
 
 	}
 
+	//netty作者推荐的重连方式
+	//https://stackoverflow.com/questions/19739054/whats-the-best-way-to-reconnect-after-connection-closed-in-netty
+
+/*	private void doConnect() {
+		Bootstrap b = ...;
+		b.connect().addListener((ChannelFuture f) -> {
+			if (!f.isSuccess()) {
+				long nextRetryDelay = nextRetryDelay(...);
+				f.channel().eventLoop().schedule(nextRetryDelay, ..., () -> {
+					doConnect();
+				}); // or you can give up at some point by just doing nothing.
+			}
+		});
+	}*/
+
 	public static void main(String[] args) throws Exception {
 		HelloClient client = new HelloClient();
-		client.connect("127.0.0.1", 8000);
+		client.connect("127.0.0.1", 8080);
 	}
 }
