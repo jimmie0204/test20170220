@@ -1,4 +1,4 @@
-package com.jimmie.java.基本测试.all.designPattern.singleton;
+package com.jimmie.java.designer.singleton;
 
 /**
  * Created by Jay on 3/30/17.

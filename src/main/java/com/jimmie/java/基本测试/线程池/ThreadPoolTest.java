@@ -66,11 +66,11 @@ public class ThreadPoolTest {
 				MessTask mt1 = new MessTask(bits1);
 				MessTask mt2 = new MessTask(bits2);
 
-//				invokeAll(mt1,mt2);
-				mt1.fork();
-				mt2.fork();
-				mt1.join();
-				mt2.join();
+				invokeAll(mt1,mt2);
+//				mt1.fork();
+//				mt2.fork();
+//				mt1.join();
+//				mt2.join();
 
 			}else{
 				if(bits.length==1)
