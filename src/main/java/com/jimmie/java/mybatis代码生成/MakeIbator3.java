@@ -21,7 +21,7 @@ import java.util.Random;
  *  自定义生成MyBatis的实体类、实体映射XML文件、Mapper.java
  *@author Jimmie
  *@version 1.0.3
- *修改java实体中的bigdecimal为double
+ *修改java实体中的bigdecimal为double,添加inset方法
  *去掉分页
  *
  */
@@ -69,7 +69,7 @@ public class MakeIbator3 {
     private final String type_enum = "enum";
     
  
-    private final String dbName = "newe-portal"; // 数据库名
+    private final String dbName = "newe_oms"; // 数据库名
     
     private final String moduleName = ""; // 模块名
  
@@ -79,9 +79,9 @@ public class MakeIbator3 {
  
     private final String xml_path = "d:/entity_mapper/"+dbName;
  
-    private final String bean_package = "com.newe.portal.domain";
+    private final String bean_package = "com.eheart.oms.domain";
     
-    private final String mapper_package = "com.newe.portal.mapper";
+    private final String mapper_package = "com.eheart.oms.mapper";
  
  
     private final String driverName = "com.mysql.jdbc.Driver";
@@ -121,17 +121,15 @@ public class MakeIbator3 {
         List<String> tables = new ArrayList<String>();
         PreparedStatement pstate = conn.prepareStatement("show tables");
         ResultSet results = pstate.executeQuery();
-       while ( results.next() ) {
+      /* while ( results.next() ) {
             String tableName = results.getString(1);
             //          if ( tableName.toLowerCase().startsWith("yy_") ) {
             tables.add(tableName);
             //          }
-        }
-//       tables.add("t_company_info");
-//        tables.add("astore_pay_mode");
-//        tables.add("message_retry");
-//        tables.add("vsa_return_out");
-//        tables.add("vsa_price_compare");
+        }*/
+        tables.add("order_stock_record");
+//        tables.add("newe_purchase");
+//        tables.add("newe_return");
         return tables;
     }
  
@@ -537,10 +535,14 @@ public class MakeIbator3 {
         bw.newLine();
         bw.newLine();
         
-        bw.write("\tpublic int deleteByPrimaryKey("+beanName+" "+processResultMapId2(beanName)+");");
+        bw.write("\tpublic int deleteByObject("+beanName+" "+processResultMapId2(beanName)+");");
         bw.newLine();
         bw.newLine();
-        
+
+        bw.write("\tpublic int insert("+beanName+" "+processResultMapId2(beanName)+");");
+        bw.newLine();
+        bw.newLine();
+
         bw.write("\tpublic int insertSelective("+beanName+" "+processResultMapId2(beanName)+");");
         bw.newLine();
         bw.newLine();
@@ -683,7 +685,7 @@ public class MakeIbator3 {
         
  
         // 添加insert方法
-        /*bw.write("\t<!-- 添加 -->");
+        bw.write("\t<!-- 添加 -->");
         bw.newLine();
         bw.write("\t<insert id=\"insert\" parameterType=\"" + processResultMapId(beanName) + "\">");
         bw.newLine();
@@ -702,7 +704,13 @@ public class MakeIbator3 {
         bw.newLine();
         bw.write(" \t\t(");
         for ( int i = 0 ; i < size ; i++ ) {
-            bw.write("#{" + processField(columns.get(i)) + "}");
+            String sColumn = columns.get(i);
+            if(sColumn.equalsIgnoreCase("create_time") || sColumn.equalsIgnoreCase("update_time")){
+                bw.write("NOW()");
+            }else{
+                bw.write("#{" + processField(columns.get(i)) + "}");
+            }
+
             if ( i != size - 1 ) {
                 bw.write(",");
             }
@@ -711,7 +719,7 @@ public class MakeIbator3 {
         bw.newLine();
         bw.write("\t</insert>");
         bw.newLine();
-        bw.newLine();*/
+        bw.newLine();
         // 添加insert完
  
  
@@ -846,8 +854,16 @@ public class MakeIbator3 {
         bw.newLine();
         bw.newLine();
     }
- 
- 
+
+    private void handlerInXmlCUTime(BufferedWriter bw,String column) throws IOException {
+        if(column.equalsIgnoreCase("create_time") || column.equalsIgnoreCase("update_time")){
+            bw.write("NOW()");
+        }else{
+            bw.write("#{" + processField(column) + "}");
+        }
+    }
+
+
     /**
      *  获取所有的数据库表注释
      *

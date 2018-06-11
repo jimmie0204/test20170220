@@ -63,14 +63,16 @@ public class CacheTest {
 		}));;
 		
 		//没有的话使用caller取值放回缓存，覆盖默认CacheLoader
-		System.out.println(cache.get("mryx", new Callable<String>() {
+		String s = cache.get("mryx", new Callable<String>() {
 
 			@Override
 			public String call() throws Exception {
 				System.out.println("caller加载");
 				return "llll u";
 			}
-		}));
+		});
+
+		System.out.println(s);
 
 		//没有值，使用默认覆盖默认CacheLoader加载
 		System.out.println(cache.get("mryx2"));
@@ -284,6 +286,39 @@ public class CacheTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+	}
+
+	@Test
+	public void test8() throws ExecutionException{
+		Cache<String, String> cache = CacheBuilder.newBuilder().build();
+		cache.put("jimmie", "sdsdsd");
+		//有的话返回值
+		System.out.println(cache.get("jimmie", new Callable<String>() {
+
+			@Override
+			public String call() throws Exception {
+				System.out.println("caller加载");
+				return "mmmm u";
+			}
+		}));;
+
+		//没有的话使用caller取值放回缓存，覆盖默认CacheLoader
+		String s = cache.get("mryx", new Callable<String>() {
+
+			@Override
+			public String call() throws Exception {
+				System.out.println("caller加载");
+				return "llll u";
+			}
+		});
+
+		System.out.println(s);
+
+		//没有值，使用默认覆盖默认CacheLoader加载
+		System.out.println(cache.getIfPresent("mryx2"));
+
+
 
 	}
 	
