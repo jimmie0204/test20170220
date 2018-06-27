@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Arrays;
 
 import org.junit.Test;
 
@@ -30,16 +31,17 @@ public class HessianSerializer  {
 		return os.toByteArray();
 	}
 
-	public static <T> Object deserialize(byte[] bytes, Class<T> clazz) {
+	public static <T> T deserialize(byte[] bytes, Class<T> clazz) {
 		ByteArrayInputStream is = new ByteArrayInputStream(bytes);
 		HessianInput hi = new HessianInput(is);
 		try {
-			return hi.readObject();
+			return (T)hi.readObject();
 		} catch (IOException e) {
 			throw new IllegalStateException(e.getMessage(), e);
 		}
 	}
-	
+
+
 	   @Test
 	    public void encode()  throws Exception {
 	    	long start =  System.currentTimeMillis();  

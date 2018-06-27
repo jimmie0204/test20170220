@@ -69,7 +69,7 @@ public class MakeIbator3 {
     private final String type_enum = "enum";
     
  
-    private final String dbName = "newe_oms"; // 数据库名
+    private final String dbName = "newe_stock"; // 数据库名
     
     private final String moduleName = ""; // 模块名
  
@@ -79,9 +79,9 @@ public class MakeIbator3 {
  
     private final String xml_path = "d:/entity_mapper/"+dbName;
  
-    private final String bean_package = "com.eheart.oms.domain";
+    private final String bean_package = "com.newe.stock.domain";
     
-    private final String mapper_package = "com.eheart.oms.mapper";
+    private final String mapper_package = "com.newe.stock.mapper";
  
  
     private final String driverName = "com.mysql.jdbc.Driver";
@@ -127,7 +127,7 @@ public class MakeIbator3 {
             tables.add(tableName);
             //          }
         }*/
-        tables.add("order_stock_record");
+        tables.add("stock_change_record");
 //        tables.add("newe_purchase");
 //        tables.add("newe_return");
         return tables;
