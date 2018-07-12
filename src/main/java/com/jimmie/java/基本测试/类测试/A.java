@@ -21,4 +21,15 @@ public class A {
 		}
 	}
 
+
+	public static  void print(int w){
+
+		System.out.println(w);
+	}
+
+	public static void main(String[] args){
+		Integer ll = null;
+
+		print(ll);
+	}
 }
