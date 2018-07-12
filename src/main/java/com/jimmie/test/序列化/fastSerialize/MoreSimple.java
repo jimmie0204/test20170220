@@ -36,6 +36,14 @@ public class MoreSimple  implements Serializable
 	}
 	public void setSex(int sex) {
 		this.sex = sex;
-	}  
-  
-}  
+	}
+
+    @Override
+    public String toString() {
+        return "MoreSimple{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                '}';
+    }
+}

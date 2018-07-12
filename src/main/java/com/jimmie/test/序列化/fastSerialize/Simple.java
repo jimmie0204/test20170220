@@ -40,7 +40,14 @@ public class Simple  implements Serializable
   
      public void setMap(Map<String, Integer> map) {  
         this.map = map;  
-     }  
-  
-  
-}  
+     }
+
+    @Override
+    public String toString() {
+        return "Simple{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", map=" + map +
+                '}';
+    }
+}
