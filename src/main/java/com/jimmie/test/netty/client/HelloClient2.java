@@ -1,16 +1,12 @@
 package com.jimmie.test.netty.client;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
-public class HelloClient {
+public class HelloClient2 {
 	
 	private Channel channel;
 	
@@ -23,7 +19,7 @@ public class HelloClient {
 			.handler(new ChannelInitializer<SocketChannel>() {
 				@Override
 				public void initChannel(SocketChannel ch) throws Exception {
-					ch.pipeline().addLast(new HelloClientIntHandler2());
+					ch.pipeline().addLast(new HelloClientIntHandler3());
 				}
 			});
 
@@ -58,7 +54,7 @@ public class HelloClient {
 	}*/
 
 	public static void main(String[] args) throws Exception {
-		HelloClient client = new HelloClient();
+		HelloClient2 client = new HelloClient2();
 		client.connect("127.0.0.1", 10201);
 	}
 }
