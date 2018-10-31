@@ -8,6 +8,7 @@ import org.apache.commons.lang.math.RandomUtils;
 import org.junit.Test;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.*;
 import java.lang.reflect.Type;
@@ -81,5 +82,33 @@ public class TypeTest {
         }
     }
 
+    public void test4_fucntion(List<Student> s,Integer age){
+
+
+    }
+    @Test
+    public void test4() throws NoSuchMethodException {
+        Method method = TypeTest.class.getMethod("test4_fucntion", List.class,Integer.class);//这里的第二个参数，和getRawType()意义类似
+        Type[] types = method.getGenericParameterTypes();
+        ParameterizedType pType = (ParameterizedType) types[0];
+        Type type = pType.getActualTypeArguments()[0];
+        System.out.println(type);
+        //type是Type类型，但直接输出的不是具体Type的五种子类型，而是这五种子类型以及WildcardType具体表现形式
+        System.out.println(type.getClass().getName());
+
+    }
+
+    @Test
+    public void test5() throws NoSuchMethodException {
+        Map<Integer, String> maps = new HashMap<>();
+        ParameterizedType pType = (ParameterizedType) maps.getClass().getGenericSuperclass();//获得HashMap的父类
+        System.out.println(pType.getRawType());//class java.util.AbstractMap
+        Type type = pType.getActualTypeArguments()[0];
+        System.out.println(type);
+        if(pType.getRawType() instanceof Class){
+            System.out.println("true");//true
+        }
+
+    }
 
 }
