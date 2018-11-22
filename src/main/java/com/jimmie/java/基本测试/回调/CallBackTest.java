@@ -7,13 +7,14 @@ package com.jimmie.java.基本测试.回调;/**
  * @create 2018-01-17 下午2:43
  */
 
-public class CC {
+public class CallBackTest {
     public static void main(String[] args){
       BB b = new BB(){
           @Override
           public void eat(String name){
-
+              System.out.println(name+" 正在吃~");
               say(name,11);
+
           }
 
           private void say(String name,int age) {
