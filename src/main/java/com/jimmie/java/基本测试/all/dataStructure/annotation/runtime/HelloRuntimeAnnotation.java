@@ -64,8 +64,8 @@ public class HelloRuntimeAnnotation {
     private static void doTest(Object object) {
         Method[] methods = object.getClass().getDeclaredMethods();
         for (Method method : methods) {
-            if (method.isAnnotationPresent(Test.class)) {
-                Test test = method.getAnnotation(Test.class);
+            if (method.isAnnotationPresent(RunTest.class)) {
+                RunTest test = method.getAnnotation(RunTest.class);
                 try {
                     String methodName = test.value().length() == 0 ? method.getName() : test.value();
                     System.out.printf("Testing. methodName: %s, id: %s\n", methodName, test.id());
