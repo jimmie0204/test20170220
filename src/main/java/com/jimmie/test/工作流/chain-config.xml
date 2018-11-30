@@ -1,0 +1,10 @@
+<catalog>
+    <chain name="sell-vehicle">
+        <command id="ExceptionHandler" className = "com.jimmie.test.工作流.SellVehicleExceptionHandler"/>
+        <command id="GetCustomerInfo" className="com.jimmie.test.工作流.GetCustomerInfo"/>
+        <command id="TestDriveVehicle" className="com.jimmie.test.工作流.TestDriveVehicle"/>
+        <command id="NegotiateSale" className="com.jimmie.test.工作流.NegotiateSale"/>
+        <command id="ArrangeFinancing" className="com.jimmie.test.工作流.ArrangeFinancing"/>
+        <command id="CloseSale" className="com.jimmie.test.工作流.CloseSale"/>
+    </chain>
+</catalog>

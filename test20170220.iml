@@ -141,5 +141,7 @@
     <orderEntry type="library" name="Maven: org.objenesis:objenesis:2.1" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.aviator:aviator:3.3.0" level="project" />
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.8.3" level="project" />
+    <orderEntry type="library" name="Maven: commons-chain:commons-chain:1.2" level="project" />
+    <orderEntry type="library" name="Maven: commons-digester:commons-digester:2.1" level="project" />
   </component>
 </module>
