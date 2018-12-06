@@ -1,4 +1,4 @@
-package com.jimmie.java.基本测试java8;/**
+package com.jimmie.java.基本测试java8.函数编程;/**
  * Created by Jimmie on 2018/6/3.
  */
 
