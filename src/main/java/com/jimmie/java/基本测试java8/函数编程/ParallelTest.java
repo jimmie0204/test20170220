@@ -50,8 +50,7 @@ public class ParallelTest {
     @Test
     public void test4() throws InterruptedException {
         Stream<Integer> peek = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 9, 8, 0, 1)
-                .stream()
-                .parallel().map(num -> num + 1).peek(num -> System.out.println(num));
+                .stream().map(m->{System.out.println(m);return m+1;}).peek(System.out::println);
 
     }
 }
