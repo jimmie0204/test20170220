@@ -1,16 +1,14 @@
 package com.jimmie.java.基本测试java8.函数编程;
 
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.BaseStream;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.jimmie.java.基本测试.Student;
 import org.junit.Test;
 
-import com.jimmie.java.基本测试.Student;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamTest {
 
@@ -295,6 +293,33 @@ public class StreamTest {
 
         System.out.println(bad[0]);
 
+    }
+
+    @Test
+    public void test11() {//map翻转
+        Map<Integer, String> map = Maps.newHashMap();
+        map.put(1, "a");
+        map.put(2, "a");
+        map.put(3, "b");
+        System.out.println(map);
+        Map<String, Integer> reverseMap = map.entrySet().stream().collect(Collectors.toMap(v -> v.getValue(), k -> k.getKey(), (u, u2) -> u2));
+        System.out.println(reverseMap);
+    }
+
+    @Test
+    public void test12() {
+        Map<Integer, List<Person>> map = Maps.newHashMap();
+        map.put(1, Lists.newArrayList(new Person(1, "a")));
+
+        Map<Integer, List<Person>> map2 = Maps.newHashMap();
+        map2.put(1, Lists.newArrayList(new Person(2, "b")));
+
+        map2.forEach((k, v) -> map.merge(k, v, (v1, v2) -> {
+            v1.addAll(v2);
+            return v1;
+        }));
+
+        System.out.println(map);
     }
 
 }

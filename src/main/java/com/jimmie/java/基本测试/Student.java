@@ -1,5 +1,9 @@
 package com.jimmie.java.基本测试;
 
+import com.jimmie.test.随机数.DateUtil;
+
+import java.util.Date;
+
 public class Student {
 
 	public int age;
@@ -22,6 +26,16 @@ public class Student {
 
 	public String name;
 
+	private Date birthDay;
+
+	public Date getBirthDay() {
+		return birthDay;
+	}
+
+	public void setBirthDay(Date birthDay) {
+		this.birthDay = birthDay;
+	}
+
 	public Student(){}
 
 	public Student(int age,String name){
@@ -29,5 +43,12 @@ public class Student {
 		this.name = name;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Student{" +
+				"age=" + age +
+				", name='" + name + '\'' +
+				", birthDay=" + DateUtil.getDate(birthDay) +
+				'}';
+	}
 }
