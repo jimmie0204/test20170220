@@ -11,6 +11,17 @@ public class Study {
 
     private Student student;
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Study(){
+
+    }
     public Study(Student student){
         this.student = student;
     }
@@ -20,4 +31,9 @@ public class Study {
         System.out.println("ok，go");
     }
 
+    public int learn(){
+        System.out.println("ok，learning");
+        return 1;
+    }
 }
+
