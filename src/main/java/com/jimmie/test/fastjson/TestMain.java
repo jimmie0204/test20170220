@@ -1,15 +1,14 @@
 package com.jimmie.test.fastjson;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Test;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.jimmie.test.bean操作.Student;
+import org.junit.Test;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class TestMain {
@@ -78,6 +77,69 @@ public class TestMain {
 			this.t2 = t2;
 		}
 		
+	}
+
+	//枚举类型的json
+	@Test
+	public void test5(){
+
+		Wolf wolf = new Wolf();
+		wolf.setAge(12);
+		wolf.setName("ssdgdd");
+		wolf.setAniType(AniType.DONGWU);
+
+		System.out.println(JSON.toJSONString(wolf));
+
+	}
+
+	enum AniType{
+		DONGWU(1),ZHIWU(2);
+
+		private AniType(Integer code){
+			this.code = code;
+		}
+
+		private Integer code;
+
+		public Integer getCode() {
+			return code;
+		}
+
+		public void setCode(Integer code) {
+			this.code = code;
+		}
+	}
+
+	class Wolf{
+		Integer age;
+
+		String name;
+
+		AniType aniType;
+
+		public Integer getAge() {
+			return age;
+		}
+
+		public void setAge(Integer age) {
+			this.age = age;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public AniType getAniType() {
+			return aniType;
+		}
+
+		public void setAniType(AniType aniType) {
+			this.aniType = aniType;
+		}
 	}
 	
 }

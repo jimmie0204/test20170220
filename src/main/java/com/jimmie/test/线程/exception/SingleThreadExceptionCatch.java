@@ -6,7 +6,7 @@ public class SingleThreadExceptionCatch {
 		
 		 Task task = new Task();
 	     Thread thread = new Thread(task);
-	     thread.setUncaughtExceptionHandler(new RewriteUncatchtExceptionHandler());
+//	     thread.setUncaughtExceptionHandler(new RewriteUncatchtExceptionHandler());
 	     thread.start();
 	}
 
