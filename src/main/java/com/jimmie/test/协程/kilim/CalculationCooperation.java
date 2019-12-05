@@ -1,4 +1,4 @@
-package com.jimmie.test.协程kilim;
+package com.jimmie.test.协程.kilim;
 
 /*import kilim.Mailbox;
 
@@ -13,7 +13,7 @@ public class KilimMain {
 
 import kilim.Mailbox;
 import kilim.Task;
- 
+
 public class CalculationCooperation {
  public static void main(String[] args) {
   Mailbox<Calculation> sharedMailbox = new Mailbox<Calculation>();

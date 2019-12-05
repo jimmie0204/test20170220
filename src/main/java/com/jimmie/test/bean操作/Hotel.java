@@ -2,8 +2,6 @@ package com.jimmie.test.bean操作;/**
  * Created by jimmie on 2018/1/26.
  */
 
-import com.sun.istack.internal.NotNull;
-
 /**
  * @author jimmie
  * @create 2018-01-26 下午4:06
@@ -27,7 +25,7 @@ public class Hotel {
         return age;
     }
 
-    public void setAge(@NotNull int age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

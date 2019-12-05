@@ -1,10 +1,10 @@
-package com.jimmie.test.协程kilim;
-
-import java.math.RoundingMode;
+package com.jimmie.test.协程.kilim;
 
 import kilim.Mailbox;
 import kilim.Pausable;
 import kilim.Task;
+
+import java.math.RoundingMode;
 
 public class Calculator extends Task {
 

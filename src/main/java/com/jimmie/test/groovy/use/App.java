@@ -9,6 +9,6 @@ package com.jimmie.test.groovy.use;/**
 
 public class App {
     public static void main(String[] args) {
-        AppGroovy.main(args);
+//        AppGroovy.main(args);
     }
 }

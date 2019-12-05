@@ -1,20 +1,19 @@
 package com.jimmie.java.基本测试;
 
-import com.sun.istack.internal.NotNull;
 import org.junit.Test;
 
 public class BaseTest2 {
-	public static void change(String s){
-        s="zhangsan";
+    public static void change(String s) {
+        s = "zhangsan";
     }
 
-    public void hello(@NotNull Integer i){
+    public void hello(Integer i) {
 
     }
 
     @Test
-    public void test1(){
-        String s=new String("lisi");
+    public void test1() {
+        String s = new String("lisi");
         System.out.println(s);
         change(s);
         System.out.println(s);
@@ -22,7 +21,7 @@ public class BaseTest2 {
 
 
     @Test
-    public void test2(){
-        new  BaseTest2().hello(null);
+    public void test2() {
+        new BaseTest2().hello(null);
     }
 }

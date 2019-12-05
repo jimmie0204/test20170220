@@ -12,7 +12,8 @@ public class HelloSingleInstance {
 //        testSingleInstance(Type.BadSingleInstance);
 //        testSingleInstance(Type.SingleEnum);
 //        testSingleInstance(Type.SingleElvis);
-        testSingleInstance(Type.SingleJay);
+//        testSingleInstance(Type.SingleJay);
+        testSingleInstance(Type.InterClassSingleton);
     }
 
     private static void testSingleInstance(Type type) {
@@ -36,6 +37,9 @@ public class HelloSingleInstance {
                             break;
                         case SingleEnum:
                             singleInstance = SingleEnum.getInstance();
+                            break;
+                        case InterClassSingleton:
+                            singleInstance = InterClassSingleton.getInstance();
                             break;
                         default:
                             throw new IllegalArgumentException("wrong type");
@@ -61,7 +65,8 @@ public class HelloSingleInstance {
         SingleElvis,
         SingleJay,
         BadSingleInstance,
-        SingleEnum;
+        SingleEnum,
+        InterClassSingleton;
     }
 
     public interface ITestSingleInstance {

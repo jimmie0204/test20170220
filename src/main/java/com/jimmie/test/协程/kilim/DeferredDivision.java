@@ -1,13 +1,13 @@
-package com.jimmie.test.协程kilim;
+package com.jimmie.test.协程.kilim;
+
+import kilim.Mailbox;
+import kilim.Pausable;
+import kilim.Task;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Date;
 import java.util.Random;
-
-import kilim.Mailbox;
-import kilim.Pausable;
-import kilim.Task;
 
 public class DeferredDivision extends Task {
 

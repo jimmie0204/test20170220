@@ -20,7 +20,7 @@ public class BitMap {
     public void addValue(int n){
         //row = n / 32 求十进制数在数组a中的下标
         int row = n >> 5;
-        //相当于 n % 32 求十进制数在数组a[i]中的下标
+        //相当于 n % 32 求十进制数在数组a[row]中的下标
         a[row] |= 1 << (n & 0x1F);
     }
 
