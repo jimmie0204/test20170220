@@ -12,6 +12,11 @@ public class ThreadState {
 
         Thread t2  = new Thread(() -> {
             System.out.println("线程执行");
+            try {
+                TimeUnit.SECONDS.sleep(7);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         });
         System.out.println("t2线程中断状态为=="+t2.isInterrupted()+"===线程状态为=="+t2.getState().name());
         t2.start();

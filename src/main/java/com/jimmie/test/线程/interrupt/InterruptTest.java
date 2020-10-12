@@ -35,6 +35,17 @@ public class InterruptTest {
                 }
             }
         });
+
+        Thread t3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    job.task2();
+                } catch (InterruptedException e) {
+                    System.out.println("被中断抛异常结束"+Thread.currentThread().getName());
+                }
+            }
+        });
         System.out.println(t2.getName());
         System.out.println("t2线程中断状态为=="+t2.isInterrupted()+"===线程状态为=="+t2.getState().name());
         t2.start();
@@ -42,11 +53,11 @@ public class InterruptTest {
 
         TimeUnit.SECONDS.sleep(5);
         System.out.println("t2线程中断状态为=="+t2.isInterrupted()+"===线程状态为=="+t2.getState().name());
-
+        t3.start();
         job.add();//不中断测试
 //        t2.interrupt();//中断测试
         System.out.println("t2线程中断状态为=="+t2.isInterrupted()+"===线程状态为=="+t2.getState().name());
-
+        System.out.println("t3线程中断状态为=="+t3.isInterrupted()+"===线程状态为=="+t3.getState().name());
 
         TimeUnit.SECONDS.sleep(5);
         System.out.println("t2线程中断状态为=="+t2.isInterrupted()+"===线程状态为=="+t2.getState().name());

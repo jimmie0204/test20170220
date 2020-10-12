@@ -256,7 +256,7 @@ public class TestMain {
 
 		System.out.println(GenericsUtils.getSuperClassGenricType(Student2.class, 0));
 		System.out.println(GenericsUtils.getSuperClassGenricType(Student2.class, 0));
-		System.out.println(new TypeReference<List<Student2>>().getType().getTypeName());
+		System.out.println(new TypeReference<List<Student2>>(){}.getType().getTypeName());
 	}
 
 	@Test
@@ -289,4 +289,12 @@ public class TestMain {
 	}
 
 
+	@Test
+	public void test14(){
+		Class superClassGenricType = GenericsUtils.getSuperClassGenricType(new ArrayList<Student>() {
+		}.getClass());
+		System.out.println(superClassGenricType);
+
+		System.out.println(new ArrayList<Student>(){}.getClass());
+	}
 }

@@ -1,5 +1,7 @@
 package com.jimmie.test.异步.调用;
 
+import org.junit.Test;
+
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
@@ -13,8 +15,6 @@ import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
-
-import org.junit.Test;
 
 /**
  * 因此，你可以根据方法的参数的类型来加速你的记忆。
@@ -71,6 +71,8 @@ public class CompletableFutureTest {
 			public String get() {
 				try {
 					TimeUnit.SECONDS.sleep(3);
+					int i=1;
+					int o = i/0;
 					System.out.println(Thread.currentThread().getName());
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -128,13 +130,14 @@ public class CompletableFutureTest {
 
 			@Override
 			public String apply(Throwable t) {
-				System.out.println(t.getMessage());
+				System.out.println("exceptionally 打印Throwable=="+t.getMessage());
 				return t.getMessage();
 			}
 		});
 		
 		/**
 		 * 如果原始的CompletableFuture正常计算完后，这个新的CompletableFuture也计算完成，它的值和原始的CompletableFuture的计算的值相同
+		 * 在原始的CompletableFuture成功或者失败的后处理
 		 */
 		exceptionally2.thenAccept(new Consumer<String>() {//被动触发，也可以在apply中同步执行其实
 

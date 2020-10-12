@@ -14,12 +14,12 @@ public class CompareThreadTest {
 
         thread1.start();
         thread2.start();
-       /* try {
+        try {
             thread1.join();
             thread2.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
 
     }
 
