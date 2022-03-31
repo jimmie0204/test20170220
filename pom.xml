@@ -20,7 +20,7 @@
 		<druid.version>1.0.9</druid.version>
 		<poi.version>3.9</poi.version>
 		<!-- spring版本号 -->
-		<spring.version>4.1.6.RELEASE</spring.version>
+		<spring.version>5.3.18</spring.version>
 
 		<h2.version>1.4.184</h2.version>
 	</properties>
