@@ -18,7 +18,7 @@
 		<mysql.version>5.1.19</mysql.version>
 		<!-- 数据源版本 -->
 		<druid.version>1.0.9</druid.version>
-		<poi.version>3.9</poi.version>
+		<poi.version>4.1.1</poi.version>
 		<!-- spring版本号 -->
 		<spring.version>4.1.6.RELEASE</spring.version>
 
